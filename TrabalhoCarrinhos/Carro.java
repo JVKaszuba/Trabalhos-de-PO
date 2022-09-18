@@ -12,16 +12,20 @@ public class Carro {
     private Boolean ipva;
 
 //Construtor
-    public Carro() {
+    public Carro(RodaGui roda[]) {
         Random rn = new Random();   
         this.setId();                                   //Gera um ID unico com limite de ate 20 carros;
         this.setIpva(rn.nextBoolean());                 //Gera o valor do ipva, pago ou nao;
         this.setCombustivel(2.5f);          //Inicia o Combustivel em 2.5L;
         this.setValorVenda(rn.nextFloat(1000f));      //Gera o Valor de Venda;
+        this.roda = roda;
+
+        //RodaGui roda[] = new RodaGui[4];    //Gera as rodas, sorteando se estao calibradas;
+        for(int i = 0; i<4; i++){
+            System.out.println("calibragem: " + this.roda[0].getCalibragem());
+        }            
+            
         
-        RodaGui roda[] = new RodaGui[4];                //Gera as rodas, sorteando se estao calibradas;
-            roda[0] = new RodaGui();
-        System.out.println("calibragem: " + roda[0].getCalibragem());
     }
 //Getters
     public int getId() {
@@ -82,7 +86,7 @@ public class Carro {
         else
             System.out.println("IPVA: Nao Pago");
 
-           // System.out.print("Roda: " +  " " + this.roda[0].getCalibragem());    
+            //System.out.print("Roda: " +  " " + this.roda[0].getCalibragem());    
     }
 
 }
