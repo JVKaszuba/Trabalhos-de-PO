@@ -8,12 +8,8 @@ public class UsaCarro {
         Scanner teclado = new Scanner(System.in);
         int n = teclado.nextInt();
 
-        RodaGui roda[] = new RodaGui[4];
-        for(int i=0; i<4; i++)
-            roda[i] = new RodaGui();
-
         Carro carros[] = new Carro[n];
-        carros[0] = new Carro(roda);
+        carros[0] = new Carro(4);
         carros[0].status();
         
         /*for(int i=0; i<n; i++){

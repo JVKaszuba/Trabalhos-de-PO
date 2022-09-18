@@ -19,4 +19,10 @@ public class RodaGui {
     private void setCalibragem(Boolean val){
         this.calibragem = val; 
     }
+
+//toString
+    public String toString() {
+
+        return "A roda está calibrada? " + this.getCalibragem();
+    }
 }

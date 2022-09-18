@@ -8,21 +8,23 @@ public class Carro {
     private int distanciaPercorrida;
     private float combustivel;
     private float valorVenda;
-    private RodaGui roda[];
+    private int quantRoda;
+    private RodaGui[] roda = new RodaGui[4];
     private Boolean ipva;
 
 //Construtor
-    public Carro(RodaGui roda[]) {
+    public Carro(int quant) {
         Random rn = new Random();   
         this.setId();                                   //Gera um ID unico com limite de ate 20 carros;
         this.setIpva(rn.nextBoolean());                 //Gera o valor do ipva, pago ou nao;
         this.setCombustivel(2.5f);          //Inicia o Combustivel em 2.5L;
         this.setValorVenda(rn.nextFloat(1000f));      //Gera o Valor de Venda;
-        this.roda = roda;
+        this.quantRoda = quant;
 
         //RodaGui roda[] = new RodaGui[4];    //Gera as rodas, sorteando se estao calibradas;
-        for(int i = 0; i<4; i++){
-            System.out.println("calibragem: " + this.roda[0].getCalibragem());
+        for(int i = 0; i < this.quantRoda; i++) {
+            this.roda[i] = new RodaGui();
+            System.out.println(this.roda[i]);
         }            
             
         
