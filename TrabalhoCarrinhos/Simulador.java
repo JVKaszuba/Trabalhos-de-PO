@@ -27,7 +27,7 @@ public class Simulador {
 
     private void setCar() {
 
-        car[quantCar] = new Carro();
+        //car[quantCar] = new Carro();
     }
 
 

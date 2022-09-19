@@ -14,7 +14,8 @@ public class Carro {
 
 //Construtor
     public Carro(int quant) {
-        Random rn = new Random();                                
+        Random rn = new Random();
+        this.setId(rn.nextInt(5));                                
         this.setIpva(rn.nextBoolean());                 //Gera o valor do ipva, pago ou nao;
         this.setCombustivel(2.5f);          //Inicia o Combustivel em 2.5L;
         this.setValorVenda(rn.nextFloat(1000f));      //Gera o Valor de Venda;
@@ -23,14 +24,10 @@ public class Carro {
         //RodaGui roda[] = new RodaGui[4];    //Gera as rodas, sorteando se estao calibradas;
         for(int i = 0; i < this.quantRoda; i++) {
             this.roda[i] = new RodaGui();
-            System.out.println(this.roda[i]);
+           // System.out.println(this.roda[i]);
         }            
             
         
-    }
-
-    public Carro() {
-        this.setId();                                   //Gera um ID unico com limite de ate 20 carros; 
     }
 
 //Getters
@@ -55,9 +52,7 @@ public class Carro {
     }
 //Setters
 
-    private void setId() {
-        Random rn = new Random();  //PRECISA VERIFICAR SE EH UNICO;
-        int i = rn.nextInt(5);
+    private void setId(int i) {
         this.id = i;
 
     }

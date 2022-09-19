@@ -21,8 +21,8 @@ public class RodaGui {
     }
 
 //toString
-    public String toString() {
+   /*  public String toString() {
 
         return "A roda está calibrada? " + this.getCalibragem();
-    }
+    }*/
 }
