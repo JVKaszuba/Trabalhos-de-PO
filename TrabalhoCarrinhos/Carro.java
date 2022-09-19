@@ -14,8 +14,7 @@ public class Carro {
 
 //Construtor
     public Carro(int quant) {
-        Random rn = new Random();   
-        this.setId();                                   //Gera um ID unico com limite de ate 20 carros;
+        Random rn = new Random();                                
         this.setIpva(rn.nextBoolean());                 //Gera o valor do ipva, pago ou nao;
         this.setCombustivel(2.5f);          //Inicia o Combustivel em 2.5L;
         this.setValorVenda(rn.nextFloat(1000f));      //Gera o Valor de Venda;
@@ -29,6 +28,11 @@ public class Carro {
             
         
     }
+
+    public Carro() {
+        this.setId();                                   //Gera um ID unico com limite de ate 20 carros; 
+    }
+
 //Getters
     public int getId() {
         return this.id;
