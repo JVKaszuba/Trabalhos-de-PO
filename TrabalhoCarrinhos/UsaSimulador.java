@@ -10,6 +10,15 @@ public class UsaSimulador {
         Scanner ops = new Scanner(System.in);
         int num;
         menu();
+
+        for(int i = 0; i < 5; i++) {System.out.print(" ");}
+        System.out.print("    ____\n");
+        for(int i = 0; i < 5; i++) {System.out.print(" ");}
+        System.out.print(" __/  |_ \\_\n");
+        for(int i = 0; i < 5; i++) {System.out.print(" ");}
+        System.out.print("|  _     _ ``.\n");
+        for(int i = 0; i < 5; i++) {System.out.print(" ");}
+        System.out.print("'-(_)---(_)--'\n\n\n");
         
         do {
             

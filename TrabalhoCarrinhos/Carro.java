@@ -8,26 +8,23 @@ public class Carro {
     private int distanciaPercorrida;
     private float combustivel;
     private float valorVenda;
-    private int quantRoda;
     private RodaGui[] roda = new RodaGui[4];
     private Boolean ipva;
 
 //Construtor
-    public Carro(int quant) {
+    public Carro(int k) {
+
         Random rn = new Random();
+
         this.setId(rn.nextInt(5));                                
         this.setIpva(rn.nextBoolean());                 //Gera o valor do ipva, pago ou nao;
         this.setCombustivel(2.5f);          //Inicia o Combustivel em 2.5L;
         this.setValorVenda(rn.nextFloat(1000f));      //Gera o Valor de Venda;
-        this.quantRoda = quant;
 
-        //RodaGui roda[] = new RodaGui[4];    //Gera as rodas, sorteando se estao calibradas;
-        for(int i = 0; i < this.quantRoda; i++) {
+        for(int i = 0; i < 4; i++) {            //Gera as rodas, sorteando se estao calibradas;
+
             this.roda[i] = new RodaGui();
-           // System.out.println(this.roda[i]);
-        }            
-            
-        
+        }     
     }
 
 //Getters
@@ -72,9 +69,8 @@ public class Carro {
         this.ipva = ipva;
     }
 
-
-
 //Status
+
     public void status(){
         System.out.println();
         System.out.println("ID: " + this.getId());
@@ -88,6 +84,61 @@ public class Carro {
             System.out.println("IPVA: Nao Pago");
 
             //System.out.print("Roda: " +  " " + this.roda[0].getCalibragem());    
+    }
+
+//Funções
+
+    public float abastece(float quantComb) {
+
+        float quantMax = 55 - this.combustivel;     // 55 é a capacidade do tank
+
+        if(quantComb <= quantMax) {
+
+            this.combustivel += quantComb;
+            return this.combustivel;
+        }
+        else {
+
+            this.combustivel += quantMax;
+            return quantComb - quantMax;
+        }
+    }
+
+    public void pagaIPVA() {
+
+        if(this.ipva == false) {this.ipva = true;}
+    }
+
+    public void calibraPneu(int npneu) {
+
+        if(roda[npneu].getCalibragem() == false) {roda[npneu].setCalibragem(true);}
+    }
+
+    public void esvaziaPneu(int npneu) {
+
+        if(roda[npneu].getCalibragem() == true) {roda[npneu].setCalibragem(false);}
+    }
+
+    public void calibraCarro() {
+
+        for(int i = 0; i < 4; i++) {this.calibraPneu(i);}
+    }
+
+    public void esvaziaCarro() {
+
+        for(int i = 0; i < 4; i++) {this.esvaziaPneu(i);}
+    }
+
+    public void desenhaCarro() {
+
+        for(int i = 0; i < this.distanciaPercorrida; i++) {System.out.print(" ");}
+        System.out.print("    ____\n");
+        for(int i = 0; i < this.distanciaPercorrida; i++) {System.out.print(" ");}
+        System.out.print(" __/  |_ \\_\n");
+        for(int i = 0; i < this.distanciaPercorrida; i++) {System.out.print(" ");}
+        System.out.print("|  _     _ ``.\n");
+        for(int i = 0; i < this.distanciaPercorrida; i++) {System.out.print(" ");}
+        System.out.print("'-(_)---(_)--'\n\n\n");
     }
 
 }
