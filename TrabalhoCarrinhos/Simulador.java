@@ -9,8 +9,8 @@ public class Simulador {
 
     public Simulador() {
 
-        AddCar();
-        setCar();
+        //AddCar();
+        //setCar();
     }
 
 //Getters
@@ -95,9 +95,9 @@ public class Simulador {
                 do{                                             //Verifica se o carro existe;
                     System.out.print("\nQual veiculo: ");
                     num = teclado.nextInt();
-                    if(num>getQuantCar())
+                    if(car[num] == null)
                         System.out.println("Valor invalido. ");
-                }while(num > getQuantCar());
+                }while(car[num]==null);
                 
                 System.out.print("Quantidade de gasolina em L: ");
                 num2 = teclado.nextFloat();
@@ -117,7 +117,7 @@ public class Simulador {
                 break;
 
             case 7:
-                for(int i =1; i < 20; i++){
+                for(int i =0; i < 20; i++){
                     if(getCar(i) != null){
                         System.out.println("\n===== Status =====");
                         getCar(i).status();
