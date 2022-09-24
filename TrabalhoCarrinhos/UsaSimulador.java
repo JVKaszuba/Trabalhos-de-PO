@@ -8,7 +8,7 @@ public class UsaSimulador {
         
         Simulador simulado = new Simulador();
         Scanner teclado = new Scanner(System.in);
-        int i;
+        int i, opc=0;
 
         /*if(true){                                  //Só para poder esconder o código com chaves
             for(i = 0; i < 5; i++) {System.out.print(" ");}
@@ -23,8 +23,8 @@ public class UsaSimulador {
         }
       */
 
-        int opc = 0;
-        // opcoẽs 1 e 7 funcionando;
+        // opcoẽs 1 e 7 funcionando; 
+        //erro de validação nas funções para  0 < n > 19 (tamanho do vetor);
         do{ 
             simulado.usaMenu(opc);
             System.out.print("\nEscolha: ");

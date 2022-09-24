@@ -48,7 +48,7 @@ public class Simulador {
 
     public void usaMenu(int val){
         Scanner teclado = new Scanner(System.in);
-        int num;
+        int num, i;
         float num2;
             switch(val) {
             case 0:                                                 //Caso base;
@@ -69,8 +69,8 @@ public class Simulador {
                 System.out.println("12 - Ler veículos do arquivo");
                 System.out.println("13 - Sair da aplicação");
             break;
-            case 1:                                                 //Adiciona um carro;
-                if(this.getQuantCar() > 20){
+            case 1:                                                 //Adiciona um veiculo;
+                if(this.getQuantCar() > 19){
                     System.out.println("Numero max atingido. ");
                     break;
                 }
@@ -83,25 +83,36 @@ public class Simulador {
                 }
             break;
 
-            case 2:                                             //Remove um carro;
-
-                System.out.print("\nQual carro: ");         
+            case 2:                                                 //Remove um veiculo;
+            do{       
+                    
+                System.out.print("\nQual o ID do veiculo: ");   
                 num = teclado.nextInt();
+
+                if(car[num] == null)                            //Verifica se o carro existe;
+                    System.out.println("Valor invalido. ");
+                    
+            }while(car[num]==null);
+
                 RemoveCar(num);
 
             break;
             
-            case 3:                                             //Abastece um carro;
-                do{                                             //Verifica se o carro existe;
-                    System.out.print("\nQual veiculo: ");
+            case 3:                                                 //Abastece um veiculo;
+                do{       
+                    
+                    System.out.print("\nQual o ID do veiculo: ");   
                     num = teclado.nextInt();
-                    if(car[num] == null)
+
+                    if(car[num] == null)                            //Verifica se o carro existe;
                         System.out.println("Valor invalido. ");
+                        
                 }while(car[num]==null);
                 
                 System.out.print("Quantidade de gasolina em L: ");
                 num2 = teclado.nextFloat();
                 car[num].abastece(num2);                            //Abastece o carro escolhido;
+
             break;
 
             case 4:
@@ -112,12 +123,25 @@ public class Simulador {
 
                 break;
 
-            case 6:
+            case 6:                                                 //Imprime os Status de um veiculo;
+                do{       
+                        
+                    System.out.print("\nQual o ID do veiculo: ");   
+                    num = teclado.nextInt();
+                    
+                    if(car[num] == null)                            //Verifica se o carro existe;
+                        System.out.println("Valor invalido. ");
+ 
+                }while(car[num]==null);
 
+                if(getCar(num) != null){
+                    System.out.println("\n===== Status =====");
+                    getCar(num).status();
+                }
                 break;
 
-            case 7:
-                for(int i =0; i < 20; i++){
+            case 7:                                                 //Imprime os Status de todos so veiculos;
+                for( i=0; i<20; i++){
                     if(getCar(i) != null){
                         System.out.println("\n===== Status =====");
                         getCar(i).status();
