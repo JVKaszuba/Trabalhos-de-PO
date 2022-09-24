@@ -23,14 +23,13 @@ public class UsaSimulador {
         }
       */
 
-        // opcoẽs 1 e 7 funcionando; 
         //erro de validação nas funções para  0 < n > 19 (tamanho do vetor);
         do{ 
             simulado.usaMenu(opc);
             System.out.print("\nEscolha: ");
             opc = teclado.nextInt();
 
-            if(opc < 0 || opc > 13){               //Valida a opção escolhida
+            if(opc < 0 || opc > 13){
                 do{
                     System.out.print("Opcao invalida, Digite outra: ");
                     opc = teclado.nextInt();

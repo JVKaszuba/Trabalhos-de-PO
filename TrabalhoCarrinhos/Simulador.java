@@ -9,8 +9,8 @@ public class Simulador {
 
     public Simulador() {
 
-        //AddCar();
-        //setCar();
+        //AddCar(); //está dando conflito, pois inicia somando 1 em quantCar sem o usuario ter pedido;
+        //setCar(); 
     }
 
 //Getters
@@ -25,6 +25,14 @@ public class Simulador {
     }
 
 //Setters
+    private void setCar() {
+        int i;
+        for( i=0; i<20; i++)            //Cria um carro com posição(i) = ID, se não houver outro no lugar; 
+            if(car[i]==null)
+                break;
+                    
+        car[i] = new Carro(i);
+    }
 
 //Funções
     private static void AddCar() {
@@ -32,17 +40,9 @@ public class Simulador {
         quantCar++;
     }
     private static void RemoveCar(int num) {
+
         car[num] = null;
         quantCar--;
-    }
-
-    private void setCar() {
-        int i;
-        for( i=0; i<20; i++)
-            if(car[i]==null)
-                break;
-                
-        car[i] = new Carro(i);
     }
 
 
@@ -50,6 +50,7 @@ public class Simulador {
         Scanner teclado = new Scanner(System.in);
         int num, i;
         float num2;
+
             switch(val) {
             case 0:                                                 //Caso base;
                 System.out.println();
@@ -150,7 +151,7 @@ public class Simulador {
                     
             break;
 
-            case 8:
+            case 8:                                                 //Esvaziar/Calibrar Pneu;
 
                 break;
 
