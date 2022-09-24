@@ -47,10 +47,14 @@ public class Simulador {
 
 
     public void usaMenu(int val){
+        Scanner teclado = new Scanner(System.in);
+        int num;
+        float num2;
             switch(val) {
-            case 0:
+            case 0:                                                 //Caso base;
                 System.out.println();
                 System.out.println("\tSimulador de Corrida de Veículos\n");
+                System.out.println("00 - Meenu");
                 System.out.println("01 - Incluir veículo");
                 System.out.println("02 - Remover veículo");
                 System.out.println("03 - Abastecer veículo");
@@ -65,7 +69,7 @@ public class Simulador {
                 System.out.println("12 - Ler veículos do arquivo");
                 System.out.println("13 - Sair da aplicação");
             break;
-            case 1: 
+            case 1:                                                 //Adiciona um carro;
                 if(this.getQuantCar() > 20){
                     System.out.println("Numero max atingido. ");
                     break;
@@ -79,17 +83,26 @@ public class Simulador {
                 }
             break;
 
-            case 2:
-                Scanner teclado = new Scanner(System.in);
-                System.out.print("\nQual carro: ");
-                int num = teclado.nextInt();
+            case 2:                                             //Remove um carro;
+
+                System.out.print("\nQual carro: ");         
+                num = teclado.nextInt();
                 RemoveCar(num);
 
             break;
             
-            case 3:
-
-                break;
+            case 3:                                             //Abastece um carro;
+                do{                                             //Verifica se o carro existe;
+                    System.out.print("\nQual veiculo: ");
+                    num = teclado.nextInt();
+                    if(num>getQuantCar())
+                        System.out.println("Valor invalido. ");
+                }while(num > getQuantCar());
+                
+                System.out.print("Quantidade de gasolina em L: ");
+                num2 = teclado.nextFloat();
+                car[num].abastece(num2);                            //Abastece o carro escolhido;
+            break;
 
             case 4:
 

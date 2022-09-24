@@ -87,7 +87,7 @@ public class Carro {
 
 
         //Funciona, mas atrapalha a visão para ficar printando 
-        
+
        /* System.out.println();
         for(int i = 0; i < 4; i++){
             if(this.getRodas(i))
@@ -99,20 +99,16 @@ public class Carro {
 
 //Funções
 
-    public float abastece(float quantComb) {
+    public void abastece(float quantComb) {
 
         float quantMax = 55 - this.combustivel;     // 55 é a capacidade do tank
 
-        if(quantComb <= quantMax) {
-
+        if(quantComb <= quantMax) 
             this.combustivel += quantComb;
-            return this.combustivel;
-        }
-        else {
-
+        
+        else 
             this.combustivel += quantMax;
-            return quantComb - quantMax;
-        }
+        
     }
 
     public void pagaIPVA() {

@@ -30,11 +30,11 @@ public class UsaSimulador {
             System.out.print("\nEscolha: ");
             opc = teclado.nextInt();
 
-            if(opc < 1 || opc > 13){               //Valida a opção escolhida
+            if(opc < 0 || opc > 13){               //Valida a opção escolhida
                 do{
                     System.out.print("Opcao invalida, Digite outra: ");
                     opc = teclado.nextInt();
-                }while(opc < 1 || opc > 13);
+                }while(opc < 0 || opc > 13);
             }
             
         }while(opc !=13);
