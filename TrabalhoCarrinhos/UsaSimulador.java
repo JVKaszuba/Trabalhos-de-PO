@@ -23,7 +23,7 @@ public class UsaSimulador {
         }
       */
 
-        //erro de validação nas funções para  0 < n > 19 (tamanho do vetor);
+        //erro de validação nas funções para  0 < n > 19 (tamanho do vetor) car[num];
         do{ 
             simulado.usaMenu(opc);
             System.out.print("\nEscolha: ");

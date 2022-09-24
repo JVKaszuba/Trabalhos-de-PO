@@ -88,13 +88,13 @@ public class Carro {
 
         //Funciona, mas atrapalha a visão para ficar printando 
 
-       /* System.out.println();
+       System.out.println();
         for(int i = 0; i < 4; i++){
             if(this.getRodas(i))
                 System.out.println("Roda: " + i + " Calibrada. ");
             else
                 System.out.println("Roda: " + i + " Nao Calibrada. ");
-        }*/
+        }
     }
 
 //Funções

@@ -48,14 +48,14 @@ public class Simulador {
 
     public void usaMenu(int val){
         Scanner teclado = new Scanner(System.in);
-        int num, i;
+        int num, i, npneu, dd;
         float num2;
 
             switch(val) {
             case 0:                                                 //Caso base;
                 System.out.println();
                 System.out.println("\tSimulador de Corrida de Veículos\n");
-                System.out.println("00 - Meenu");
+                System.out.println("00 - Menu");
                 System.out.println("01 - Incluir veículo");
                 System.out.println("02 - Remover veículo");
                 System.out.println("03 - Abastecer veículo");
@@ -79,21 +79,21 @@ public class Simulador {
                 else{
                     setCar();
                     AddCar();
-                    System.out.println("Veiculo adicionado. ");
+                    System.out.println("Veiculo adicionado");
                     
                 }
             break;
 
             case 2:                                                 //Remove um veiculo;
-            do{       
-                    
-                System.out.print("\nQual o ID do veiculo: ");   
-                num = teclado.nextInt();
+                do{       
+                        
+                    System.out.print("\nQual o ID do veiculo: ");   
+                    num = teclado.nextInt();
 
-                if(car[num] == null)                            //Verifica se o carro existe;
-                    System.out.println("Valor invalido. ");
-                    
-            }while(car[num]==null);
+                    if(car[num] == null)                            //Verifica se o carro existe;
+                        System.out.println("Valor invalido. ");
+                        
+                }while(car[num]==null);
 
                 RemoveCar(num);
 
@@ -135,13 +135,11 @@ public class Simulador {
  
                 }while(car[num]==null);
 
-                if(getCar(num) != null){
-                    System.out.println("\n===== Status =====");
-                    getCar(num).status();
-                }
-                break;
+                System.out.println("\n===== Status =====");
+                getCar(num).status();
+            break;
 
-            case 7:                                                 //Imprime os Status de todos so veiculos;
+            case 7:                                                 //Imprime os Status de todos os veiculos;
                 for( i=0; i<20; i++){
                     if(getCar(i) != null){
                         System.out.println("\n===== Status =====");
@@ -152,12 +150,70 @@ public class Simulador {
             break;
 
             case 8:                                                 //Esvaziar/Calibrar Pneu;
+                do{       
+                            
+                    System.out.print("\nQual o ID do veiculo: ");   
+                    num = teclado.nextInt();
+                    
+                    if(car[num] == null)                            //Verifica se o carro existe;
+                        System.out.println("Valor invalido. ");
 
-                break;
+                }while(car[num]==null);
+                
+                do{    
+                    System.out.print("\nCalibrar(1) ou Esvaziar(0): ");
+                    dd = teclado.nextInt();
+                    if(dd < 0 || dd > 1)                            //Escolhe entre Calibrar/Esvaziar;
+                        System.out.print("Valor invalido. ");
 
-            case 9:
+                }while(dd < 0 || dd > 1);
+                    
+                if(dd==1){                                           //Calibra o Pneu
+                    do{
+                        System.out.print("\nQual o numero do pneu: (0-3)");
+                        npneu = teclado.nextInt();                  //Escolhe qual Pneu fazer a operação;
+                        if(npneu < 0 || npneu > 4)
+                            System.out.print("Valor invalido. ");
+                    }while(npneu < 0 || npneu > 3);
+                    
+                    car[num].calibraPneu(npneu);                   
+                }
+                else{                                             //Esvazia o Pneu;
+                    do{
+                        System.out.print("\nQual o numero do pneu: (0-3)");
+                        npneu = teclado.nextInt();               //Escolhe qual Pneu fazer a operação;
+                        if(npneu < 0 || npneu > 4)                                   
+                            System.out.print("Valor invalido. ");
+                        }while(npneu < 0 || npneu> 3);
+                    
+                    car[num].esvaziaPneu(npneu);                
+                }
+            
+            break;
 
-                break;
+            case 9:                                                 //Esvaziar/Calibrar veiculo;
+                do{       
+                                
+                    System.out.print("\nQual o ID do veiculo: ");   
+                    num = teclado.nextInt();
+                    
+                    if(car[num] == null)                            //Verifica se o Veiculo existe;
+                        System.out.println("Valor invalido. ");
+
+                }while(car[num]==null);
+                do{    
+                    System.out.print("\nCalibrar(1) ou Esvaziar(0): ");
+                    dd = teclado.nextInt();
+                    if(dd < 0 || dd > 1)                            //Escolhe entre Calibrar/Esvaziar;
+                        System.out.print("Valor invalido. ");
+
+                }while(dd < 0 || dd > 1);
+                if(dd == 1 )                                        //Calibra o Veiculo;
+                    car[num].calibraCarro();
+                else                                                //Esvazia o Veiculo
+                    car[num].esvaziaCarro();
+
+            break;
 
             case 10:
 
