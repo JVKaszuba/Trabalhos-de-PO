@@ -13,7 +13,7 @@ public class UsaCarro {
         int list[] = new int[n];
         
             System.out.print("Número de rodas: ");
-            teclado = new Scanner(System.in);
+           // teclado = new Scanner(System.in);
             int rodas = teclado.nextInt();
         
         for(int i = 0; i < n; i++) {

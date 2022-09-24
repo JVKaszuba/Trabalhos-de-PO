@@ -16,7 +16,7 @@ public class Carro {
 
         Random rn = new Random();
 
-        this.setId(rn.nextInt(5));                                
+        this.setId(k);                                
         this.setIpva(rn.nextBoolean());                 //Gera o valor do ipva, pago ou nao;
         this.setCombustivel(2.5f);          //Inicia o Combustivel em 2.5L;
         this.setValorVenda(rn.nextFloat(1000f));      //Gera o Valor de Venda;
