@@ -10,7 +10,7 @@ public class UsaSimulador {
         Scanner teclado = new Scanner(System.in);
         int i, opc=0;
 
-        /*if(true){                                  //Só para poder esconder o código com chaves
+        if(true){                                  //Só para poder esconder o código com chaves
             for(i = 0; i < 5; i++) {System.out.print(" ");}
             System.out.print("    ____\n");
             for(i = 0; i < 5; i++) {System.out.print(" ");}
@@ -21,7 +21,7 @@ public class UsaSimulador {
             System.out.print("'-(_)---(_)--'\n\n\n");
             i=0;
         }
-      */
+      
 
         //erro de validação nas funções para  0 < n > 19 (tamanho do vetor) car[num];
         do{ 

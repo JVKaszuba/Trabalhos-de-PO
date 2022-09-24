@@ -85,10 +85,7 @@ public class Carro {
         else
             System.out.println("IPVA: Nao Pago");
 
-
-        //Funciona, mas atrapalha a visão para ficar printando 
-
-       System.out.println();
+        System.out.println();
         for(int i = 0; i < 4; i++){
             if(this.getRodas(i))
                 System.out.println("Roda: " + i + " Calibrada. ");
