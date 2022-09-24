@@ -24,6 +24,7 @@ public class UsaSimulador {
       */
 
         int opc = 0;
+        // opcoẽs 1 e 7 funcionando;
         do{ 
             simulado.usaMenu(opc);
             System.out.print("\nEscolha: ");
