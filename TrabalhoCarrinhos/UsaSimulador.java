@@ -36,7 +36,6 @@ public class UsaSimulador {
                     opc = teclado.nextInt();
                 }while(opc < 1 || opc > 13);
             }
-            System.out.println(simulado.getQuantCar()); 
             
         }while(opc !=13);
        

@@ -1,13 +1,15 @@
 package TrabalhoCarrinhos;
 
+import java.util.Scanner;
+
 public class Simulador {
     
-    private Carro[] car = new Carro[20];
+    private static Carro[] car = new Carro[20];
     private static int quantCar = 0;
 
     public Simulador() {
 
-        setQuantCar();
+        AddCar();
         setCar();
     }
 
@@ -18,21 +20,32 @@ public class Simulador {
         return quantCar;
     }
 
+    private Carro getCar(int num){
+            return car[num];
+    }
+
 //Setters
 
-    private static void setQuantCar() {
-        
+//Funções
+    private static void AddCar() {
+
         quantCar++;
+    }
+    private static void RemoveCar(int num) {
+        car[num] = null;
+        quantCar--;
     }
 
     private void setCar() {
+        int i;
+        for( i=0; i<20; i++)
+            if(car[i]==null)
+                break;
+                
+        car[i] = new Carro(i);
+    }
 
-        car[getQuantCar()] = new Carro(getQuantCar());
-    }
-    private Carro getCar(int num){
-        return car[num];
-    }
-//Funções
+
     public void usaMenu(int val){
             switch(val) {
             case 0:
@@ -60,15 +73,19 @@ public class Simulador {
                     
                 else{
                     setCar();
-                    setQuantCar();
+                    AddCar();
                     System.out.println("Veiculo adicionado. ");
                     
                 }
             break;
 
             case 2:
+                Scanner teclado = new Scanner(System.in);
+                System.out.print("\nQual carro: ");
+                int num = teclado.nextInt();
+                RemoveCar(num);
 
-                break;
+            break;
             
             case 3:
 
@@ -87,9 +104,11 @@ public class Simulador {
                 break;
 
             case 7:
-                for(int i =1; i <getQuantCar(); i++){
-                    System.out.println();
-                    getCar(i).status();
+                for(int i =1; i < 20; i++){
+                    if(getCar(i) != null){
+                        System.out.println("\n===== Status =====");
+                        getCar(i).status();
+                    }    
                 }
                     
             break;
