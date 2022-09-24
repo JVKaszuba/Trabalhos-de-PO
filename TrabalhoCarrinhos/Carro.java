@@ -8,7 +8,7 @@ public class Carro {
     private int distanciaPercorrida;
     private float combustivel;
     private float valorVenda;
-    private RodaGui[] roda = new RodaGui[4];
+    private Roda[] roda = new Roda[4];
     private Boolean ipva;
 
 //Construtor
@@ -21,10 +21,8 @@ public class Carro {
         this.setCombustivel(2.5f);          //Inicia o Combustivel em 2.5L;
         this.setValorVenda(rn.nextFloat(1000f));      //Gera o Valor de Venda;
 
-        for(int i = 0; i < 4; i++) {            //Gera as rodas, sorteando se estao calibradas;
-
-            this.roda[i] = new RodaGui();
-        }     
+        for(int i = 0; i < 4; i++)         //Gera as rodas, sorteando se estao calibradas;
+            this.roda[i] = new Roda();    
     }
 
 //Getters

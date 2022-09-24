@@ -2,13 +2,13 @@ package TrabalhoCarrinhos;
 
 import java.util.Random;
 
-public class RodaGui {
+public class Roda {
 
 //Atributos
     private Boolean calibragem;
 
 //Construtor
-    public RodaGui() {
+    public Roda() {
 
         Random rn = new Random();
         this.setCalibragem(rn.nextBoolean());
