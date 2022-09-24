@@ -87,8 +87,11 @@ public class Simulador {
                 break;
 
             case 7:
-                for(int i =1; i <getQuantCar(); i++)
-                    System.out.println("Id carro: " + i + " eh: "+ getCar(i).getId());
+                for(int i =1; i <getQuantCar(); i++){
+                    System.out.println();
+                    getCar(i).status();
+                }
+                    
             break;
 
             case 8:

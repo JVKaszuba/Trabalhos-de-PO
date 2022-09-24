@@ -34,10 +34,12 @@ public class Carro {
     public int getDistanciaPercorrida() {
         return this.distanciaPercorrida;
     }
-    /*public  Boolean getRodas(int num) {
 
-        return this.roda[0].getCalibragem();
-    }*/
+    public  Boolean getRodas(int num) {
+        
+        return this.roda[num].getCalibragem();
+    }
+
     public float getCombustivel() {
         return this.combustivel;
     }
@@ -73,17 +75,23 @@ public class Carro {
 
     public void status(){
         System.out.println();
-        System.out.println("ID: " + this.getId());
-        System.out.println("Distancia: " + this.getDistanciaPercorrida() + " Km");
-        System.out.println("Combustivel: " + this.getCombustivel() + " L");
-        System.out.println("Valor de venda: " + this.getValorVenda());
+        System.out.println("ID: "               + this.getId());
+        System.out.println("Distancia: "        + this.getDistanciaPercorrida() + " Km");
+        System.out.println("Combustivel: "      + this.getCombustivel() + " L");
+        System.out.println("Valor de venda: "   + this.getValorVenda());
 
         if(this.getIpva())
             System.out.println("IPVA: Pago");
         else
             System.out.println("IPVA: Nao Pago");
-
-            //System.out.print("Roda: " +  " " + this.roda[0].getCalibragem());    
+            
+        System.out.println();
+        for(int i = 0; i < 4; i++){
+            if(this.getRodas(i))
+                System.out.println("Roda: " + i + " Calibrada. ");
+            else
+                System.out.println("Roda: " + i + " Nao Calibrada. ");
+        }
     }
 
 //Funções
