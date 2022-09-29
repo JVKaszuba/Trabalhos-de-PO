@@ -55,19 +55,20 @@ public class Carro {
 
     private void setId(int i) {
         this.id = i;
-
     }
+
     private void setDistanciaPercorrida() {
-        
         this.distanciaPercorrida += 5;
     }
 
     private void setCombustivel(float combustivel) {
         this.combustivel = combustivel;
     }
+
     private void setValorVenda(float valorVenda) {
         this.valorVenda = valorVenda;
     }
+
     private void setIpva(Boolean ipva) {
         this.ipva = ipva;
     }
@@ -134,26 +135,25 @@ public class Carro {
         for(int i = 0; i < 4; i++) {this.esvaziaPneu(i);}
     }
 
-    public void andaCarro(){
-        int flag = 0;
+    public void andaCarro() {
 
         for(int i = 0; i < 4; i++){
-            if(this.getRodas(i))
-                System.out.println("Roda: " + i + " Calibrada. ");
-            else{
-                System.out.println("Roda: " + i + " Nao Calibrada. ");
-                flag = 99;
+            if(this.getRodas(i) == false) {
+                System.out.println("As rodas não estão calibradas");
+                break;
             }
-                
-        }
-        if((getCombustivel()> 0.55) && (getIpva()) && (flag != 99)){
-            this.setDistanciaPercorrida();
-            this.combustivel -= 0.55;
-            desenhaCarro();
-        }
-            
+            if(i == 3) {
+                if(getCombustivel()> 0.55) {
+                    if(getIpva()) {
+                        this.setDistanciaPercorrida();
+                        this.setCombustivel(getCombustivel() - (float) 0.55);
+                    }
+                    else {System.out.println("O IPVA não está pago");}
+                }
+                else {System.out.println("O carro não tem combustível suficiente");}
+            }
+        }       
     }
-
 
     public void desenhaCarro() {
 
