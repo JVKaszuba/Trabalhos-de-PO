@@ -228,7 +228,7 @@ public class Simulador {
 
 					for(i = 0; i < 20; i++) {
 						
-						if(car[i] != null) {car[i].desenhaCarro(); System.out.println("\n");}
+						if(car[i] != null) {car[i].desenhaCarro();}
 					}
 
 			        break;
