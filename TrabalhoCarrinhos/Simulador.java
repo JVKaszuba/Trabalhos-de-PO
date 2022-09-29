@@ -227,6 +227,7 @@ public class Simulador {
 
 			        break;
 			    }
+				
 		}
     
     }

@@ -9,19 +9,7 @@ public class UsaSimulador {
         Simulador simulado = new Simulador();
         Scanner teclado = new Scanner(System.in);
 
-            int i, opc=0;
-
-           /* if(true){                                  //Só para poder esconder o código com chaves
-                for(i = 0; i < 5; i++) {System.out.print(" ");}
-                System.out.print("    ____\n");
-                for(i = 0; i < 5; i++) {System.out.print(" ");}
-                System.out.print(" __/  |_ \\_\n");
-                for(i = 0; i < 5; i++) {System.out.print(" ");}
-                System.out.print("|  _     _ ``.\n");
-                for(i = 0; i < 5; i++) {System.out.print(" ");}
-                System.out.print("'-(_)---(_)--'\n\n\n");
-                i=0;
-            } */
+            int opc=0;
 
             //erro de validação nas funções para  0 < n > 19 (tamanho do vetor) car[num];
             do{ 
