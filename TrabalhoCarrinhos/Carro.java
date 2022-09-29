@@ -20,9 +20,13 @@ public class Carro {
         this.setIpva(rn.nextBoolean());                 //Gera o valor do ipva, pago ou nao;
         this.setCombustivel(2.5f);          //Inicia o Combustivel em 2.5L;
         this.setValorVenda(rn.nextFloat(1000f));      //Gera o Valor de Venda;
-
         for(int i = 0; i < 4; i++)         //Gera as rodas, sorteando se estao calibradas;
-            this.roda[i] = new Roda();    
+            this.roda[i] = new Roda();  
+    }
+    public Carro(){
+
+        this.distanciaPercorrida = 0;
+        
     }
 
 //Getters
@@ -53,12 +57,11 @@ public class Carro {
         this.id = i;
 
     }
-    /*private void setDistanciaPercorrida(int distanciaPercorrida) {
-        this.distanciaPercorrida = distanciaPercorrida;
+    private void setDistanciaPercorrida() {
+        
+        this.distanciaPercorrida += 5;
     }
-   / private void setRodas(Rodas[] rodas) {
-        this.rodas = rodas;
-    }*/
+
     private void setCombustivel(float combustivel) {
         this.combustivel = combustivel;
     }
@@ -130,6 +133,27 @@ public class Carro {
 
         for(int i = 0; i < 4; i++) {this.esvaziaPneu(i);}
     }
+
+    public void andaCarro(){
+        int flag = 0;
+
+        for(int i = 0; i < 4; i++){
+            if(this.getRodas(i))
+                System.out.println("Roda: " + i + " Calibrada. ");
+            else{
+                System.out.println("Roda: " + i + " Nao Calibrada. ");
+                flag = 99;
+            }
+                
+        }
+        if((getCombustivel()> 0.55) && (getIpva()) && (flag != 99)){
+            this.setDistanciaPercorrida();
+            this.combustivel -= 0.55;
+            desenhaCarro();
+        }
+            
+    }
+
 
     public void desenhaCarro() {
 

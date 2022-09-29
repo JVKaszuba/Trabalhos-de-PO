@@ -117,7 +117,16 @@ public class Simulador {
 			    break;
 
 			    case 4:
+				do{       
+			            
+					System.out.print("\nQual o ID do veiculo: ");   
+					num = teclado.nextInt();
 
+					if(car[num] == null)                            //Verifica se o carro existe;
+						System.out.println("Valor invalido. ");
+						
+				}while(car[num]==null);
+					car[num].andaCarro();
 			        break;
 
 			    case 5:
