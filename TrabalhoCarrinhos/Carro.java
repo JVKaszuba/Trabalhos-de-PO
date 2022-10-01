@@ -132,22 +132,26 @@ public class Carro {
     }
 
     public void andaCarro() {
-
+        int flag = 0;
         for(int i = 0; i < 4; i++){
             if(this.getRodas(i) == false) {
-                System.out.println("As rodas não estão calibradas");
-                return;
+                System.out.println("Veiculo "+ this.getId() + " as rodas não estão calibradas. ");       //  Verifica se as rodas estão calibradas;
+                flag = 99;
+                break;
             }
         }
-        
-        if(getCombustivel()> 0.55) {
-            if(getIpva()) {
-                this.setDistanciaPercorrida(getDistanciaPercorrida() + 5);
-                this.setCombustivel(getCombustivel() - (float) 0.55);
-            }
-            else {System.out.println("O IPVA não está pago");}
+        if(getIpva() == false){
+            flag = 99;
+            System.out.println("Veiculo "+ this.getId() + " o IPVA não está pago. ");
         }
-        else {System.out.println("O carro não tem combustível suficiente");}
+        if(getCombustivel() < 0.55){
+            flag = 99;
+            System.out.println("Veiculo "+ this.getId() + " não possui gasolina sufuciente. ");
+        }
+        if(flag == 0){
+            this.setDistanciaPercorrida(getDistanciaPercorrida() + 5);  //Acrescenta Distancia Percorrida;
+            this.setCombustivel(getCombustivel() - (float) 0.55);       //Gasta a gasolina para andar
+        }
     }
 
     public void desenhaCarro() {

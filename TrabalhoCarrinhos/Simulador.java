@@ -85,18 +85,22 @@ public class Simulador {
 			    break;
 
 			    case 2:                                                 //Remove um veiculo;
-			        do{       
-			                
-			            System.out.print("\nQual o ID do veiculo: ");   
-			            num = teclado.nextInt();
+					if(quantCar > 0){
+						do{       
+								
+							System.out.print("\nQual o ID do veiculo: ");   
+							num = teclado.nextInt();
 
-			            if(car[num] == null)                            //Verifica se o carro existe;
-			                System.out.println("Valor invalido. ");
-			                
-			        }while(car[num]==null);
+							if(car[num] == null)                            //Verifica se o carro existe;
+								System.out.println("Valor invalido. ");
+								
+						}while(car[num]==null);
 
-			        RemoveCar(num);
-
+						RemoveCar(num);
+						System.out.println("Veiculo removido. ");
+					}    
+					else
+						System.out.println("Não existem veiculos. ");
 			    break;
 			    
 			    case 3:                                                 //Abastece um veiculo;
@@ -116,22 +120,27 @@ public class Simulador {
 
 			    break;
 
-			    case 4:
-				do{       
-			            
-					System.out.print("\nQual o ID do veiculo: ");   
-					num = teclado.nextInt();
+			    case 4:													//Faz um veiculo andar;
+					do{       
+							
+						System.out.print("\nQual o ID do veiculo: ");   
+						num = teclado.nextInt();
 
-					if(car[num] == null)                            //Verifica se o carro existe;
-						System.out.println("Valor invalido. ");
-						
-				}while(car[num]==null);
+						if(car[num] == null)                            //Verifica se o carro existe;
+							System.out.println("Valor invalido. ");
+							
+					}while(car[num]==null);
+
 					car[num].andaCarro();
-			        break;
 
-			    case 5:
+			    break;
 
-			        break;
+			    case 5:													//Movimenta todos os veiculos
+					for( i=0; i<20; i++)
+						if(getCar(i) != null)
+							car[i].andaCarro();	
+			
+			    break;
 
 			    case 6:                                                 //Imprime os Status de um veiculo;
 			        do{       
@@ -146,6 +155,7 @@ public class Simulador {
 
 			        System.out.println("\n===== Status =====");
 			        getCar(num).status();
+					
 			    break;
 
 			    case 7:                                                 //Imprime os Status de todos os veiculos;
