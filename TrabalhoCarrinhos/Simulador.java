@@ -22,7 +22,7 @@ public class Simulador {
             return car[num];
     }
 																		//Setters
-    private void setCar() {
+    private int setCar() {
         int i;
         for( i=0; i<20; i++)            //Cria um carro com posição(i) = ID, se não houver outro no lugar; 
             if(car[i]==null)
@@ -30,6 +30,7 @@ public class Simulador {
                     
         car[i] = new Carro(i);
         AddCar();
+		return i;
     }
 																		//Métodos
     private static void AddCar() {
@@ -73,15 +74,16 @@ public class Simulador {
 			            break;
 			        }
 			            
-			        else{
-			            setCar();
-			            System.out.println("Veiculo adicionado");
-			            
-			        }
+			        else
+			            System.out.println("Veiculo adicionado com ID: " + setCar());
+
 			    break;
 
 			    case 2:                                                 //Remove um veiculo;
-					if(quantCar > 0){
+					if(quantCar == 0){
+						System.out.println("Não há carros na Pista. ");
+						break;
+					}
 						do{       
 								
 							System.out.print("\nQual o ID do veiculo: ");   
@@ -91,16 +93,18 @@ public class Simulador {
 								System.out.println("Valor invalido. ");
 								
 						}while(car[num]==null);
-
+						
+						System.out.println("Veiculo com ID " + car[num].getId() + " removido. ");
 						RemoveCar(num);
-						System.out.println("Veiculo removido. ");
-					}    
-					else
-						System.out.println("Não existem veiculos. ");
+						
 			    break;
 			    
 			    case 3:                                                 //Abastece um veiculo;
-			        do{       
+					if(quantCar == 0){
+						System.out.println("Não há carros na Pista. ");
+						break;
+					}    
+				do{       
 			            
 			            System.out.print("\nQual o ID do veiculo: ");   
 			            num = teclado.nextInt();
@@ -117,7 +121,12 @@ public class Simulador {
 			    break;
 
 			    case 4:													//Faz um veiculo andar;
-					do{       
+					
+				if(quantCar == 0){
+					System.out.println("Não há carros na Pista. ");
+					break;
+				}
+				do{       
 							
 						System.out.print("\nQual o ID do veiculo: ");   
 						num = teclado.nextInt();
@@ -132,14 +141,22 @@ public class Simulador {
 			    break;
 
 			    case 5:													//Movimenta todos os veiculos
-					for( i=0; i<20; i++)
+				if(quantCar == 0){
+					System.out.println("Não há carros na Pista. ");
+					break;
+				}	
+				for( i=0; i<20; i++)
 						if(getCar(i) != null)
 							car[i].andaCarro();	
 			
 			    break;
 
 			    case 6:                                                 //Imprime os Status de um veiculo;
-			        do{       
+			    if(quantCar == 0){
+					System.out.println("Não há carros na Pista. ");
+					break;
+				}    
+				do{       
 			                
 			            System.out.print("\nQual o ID do veiculo: ");   
 			            num = teclado.nextInt();
@@ -155,7 +172,11 @@ public class Simulador {
 			    break;
 
 			    case 7:                                                 //Imprime os Status de todos os veiculos;
-			        for( i=0; i<20; i++){
+			    if(quantCar == 0){
+					System.out.println("Não há carros na Pista. ");
+					break;
+				}    
+				for( i=0; i<20; i++){
 			            if(getCar(i) != null){
 			                System.out.println("\n===== Status =====");
 			                getCar(i).status();
@@ -165,7 +186,11 @@ public class Simulador {
 			    break;
 
 			    case 8:                                                 //Esvaziar/Calibrar Pneu;
-			        do{       
+			    if(quantCar == 0){
+					System.out.println("Não há carros na Pista. ");
+					break;
+				}    
+				do{       
 			                    
 			            System.out.print("\nQual o ID do veiculo: ");   
 			            num = teclado.nextInt();
@@ -207,7 +232,11 @@ public class Simulador {
 			    break;
 
 			    case 9:                                                 //Esvaziar/Calibrar veiculo;
-			        do{       
+			    if(quantCar == 0){
+					System.out.println("Não há carros na Pista. ");
+					break;
+				}    
+				do{       
 			                        
 			            System.out.print("\nQual o ID do veiculo: ");   
 			            num = teclado.nextInt();
@@ -231,20 +260,32 @@ public class Simulador {
 			    break;
 
 			    case 10:
+					if(quantCar == 0){
+						System.out.println("Não há carros na Pista. ");
+						break;
+					}
 
-					for(i = 0; i < 20; i++) {
-						
-						if(car[i] != null) {car[i].desenhaCarro();}
+					for(i = 0; i < 20; i++) {							//Imprime todos os carros na pista		
+						if(car[i] != null) {
+							System.out.println("Carro com ID: " + car[i].getId());	
+							car[i].desenhaCarro();
+						}		
 					}
 
 			        break;
 
 			    case 11:
-
+				if(quantCar == 0){
+					System.out.println("Não há carros na Pista. ");
+					break;
+				}
 			        break;
 			            
 			    case 12:
-
+				if(quantCar == 0){
+					System.out.println("Não há carros na Pista. ");
+					break;
+				}
 			        break;
 			    }
 				
