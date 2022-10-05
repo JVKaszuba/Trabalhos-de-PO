@@ -305,6 +305,10 @@ public class Simulador {
 				}
 
 			break;
+			case 13:
+				System.out.println("Fim ");
+				teclado.close();
+			break;
 			}		
 		}
 

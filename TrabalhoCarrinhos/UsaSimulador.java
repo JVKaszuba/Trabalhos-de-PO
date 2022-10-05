@@ -23,7 +23,9 @@ public class UsaSimulador {
                     opc = teclado.nextInt();
                 }while(opc < 0 || opc > 13);
             }
-            
+            if(opc == 13)
+                simulado.usaMenu(opc);
+                
         }while(opc != 13);
         teclado.close();   
 
