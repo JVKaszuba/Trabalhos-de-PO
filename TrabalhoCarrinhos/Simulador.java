@@ -94,14 +94,16 @@ public class Simulador{
 					break;
 				}
 				do{       											//Verifica se o carro existe;
-						
+					dd = 0;
 					System.out.print("\nQual o ID do veiculo: ");   
 					num = teclado.nextInt();
 
-					if(car[num] == null)                            
+					if(num < 0 || num > 19 || car[num] == null){
 						System.out.println("Valor invalido. ");
-						
-				}while(car[num]==null);
+						dd = 99;
+					}
+							
+				}while(dd == 99);
 				
 				System.out.println("Veiculo com ID " + car[num].getId() + " removido. ");
 				RemoveCar(num);
@@ -116,22 +118,38 @@ public class Simulador{
 				}    
 				do{        											//Verifica se o carro existe;
 					
+					dd = 0;
 					System.out.print("\nQual o ID do veiculo: ");   
 					num = teclado.nextInt();
 
-					if(car[num] == null)                           
+					if(num < 0 || num > 19 || car[num] == null){
 						System.out.println("Valor invalido. ");
-						
-				}while(car[num]==null);
+						dd = 99;
+					}
+							
+				}while(dd == 99);
 				
-				System.out.print("Quantidade de gasolina em L: ");
-				num2 = teclado.nextFloat();
+				do{ 												//Valida para abastecer valores positivos
+
+					dd = 0;
+					System.out.print("Quantidade de gasolina em L: ");
+					num2 = teclado.nextFloat();
+					if(num2 < 0){
+						System.out.println("Valor invalido. ");
+						dd = 99;
+					}
+
+				}while(dd == 99);
+
+				if(car[num].getCombustivel() + num2 > 55)
+					num2 = 55 - car[num].getCombustivel();
+
 				car[num].abastece(num2);
 				System.out.println("Veiculo com ID " + car[num].getId() + " abastecido com " + num2 + " Litros de gasolina ");                         
 
 			break;
 
-			case 4:													//Faz um veiculo andar;
+			case 4:														//Faz um veiculo andar;
 				
 				if(quantCar == 0){										//Verifica se não há carros;
 					System.out.println("Não há carros na Pista. ");
@@ -171,13 +189,16 @@ public class Simulador{
 				}    
 				do{       											//Verifica se o carro existe;
 							
+					dd = 0;
 					System.out.print("\nQual o ID do veiculo: ");   
 					num = teclado.nextInt();
-					
-					if(car[num] == null)                            
-						System.out.println("Valor invalido. ");
 
-				}while(car[num]==null);
+					if(num < 0 || num > 19 || car[num] == null){
+						System.out.println("Valor invalido. ");
+						dd = 99;
+					}
+							
+				}while(dd == 99);
 
 				System.out.println("\n===== Status =====");
 				getCar(num).status();
@@ -207,13 +228,16 @@ public class Simulador{
 				}    
 				do{       											//Verifica se o carro existe;
 							
+					dd = 0;
 					System.out.print("\nQual o ID do veiculo: ");   
 					num = teclado.nextInt();
-					
-					if(car[num] == null)                            
-						System.out.println("Valor invalido. ");
 
-				}while(car[num] == null);
+					if(num < 0 || num > 19 || car[num] == null){
+						System.out.println("Valor invalido. ");
+						dd = 99;
+					}
+							
+				}while(dd == 99);
 				
 				do{    												//Escolhe entre Calibrar/Esvaziar;
 					System.out.print("\nCalibrar(1) ou Esvaziar(0): ");
@@ -256,13 +280,16 @@ public class Simulador{
 				}    
 				do{       											//Verifica se o Veiculo existe;
 									
+					dd = 0;
 					System.out.print("\nQual o ID do veiculo: ");   
 					num = teclado.nextInt();
-					
-					if(car[num] == null)                            
-						System.out.println("Valor invalido. ");
 
-				}while(car[num]==null);
+					if(num < 0 || num > 19 || car[num] == null){
+						System.out.println("Valor invalido. ");
+						dd = 99;
+					}
+							
+				}while(dd == 99);
 
 				do{    
 
@@ -297,6 +324,7 @@ public class Simulador{
 			break;
 
 			case 11:
+
 				if(quantCar == 0){
 					System.out.println("Não há carros na Pista. ");
 					break;
@@ -306,6 +334,7 @@ public class Simulador{
 			break;
 					
 			case 12:
+
 				if(quantCar == 0){
 					System.out.println("Não há carros na Pista. ");
 					break;
@@ -320,8 +349,6 @@ public class Simulador{
 			break;
 			}		
 		}
-
-
 
 	private void carroLer() {
 		File lista = new File("Lista.dat");
