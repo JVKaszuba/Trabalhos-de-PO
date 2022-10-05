@@ -121,7 +121,7 @@ public class Simulador {
 				System.out.print("Quantidade de gasolina em L: ");
 				num2 = teclado.nextFloat();
 				car[num].abastece(num2);
-				System.out.print("Veiculo com ID " + car[num].getId() + " abastecido com " + num2 + " Litros de gasolina ");                         
+				System.out.println("Veiculo com ID " + car[num].getId() + " abastecido com " + num2 + " Litros de gasolina ");                         
 
 			break;
 
@@ -152,8 +152,8 @@ public class Simulador {
 					break;
 				}	
 				for( i = 0; i < 20; i++)
-						if(getCar(i) != null)						//Caso o carro exista, ele anda;
-							car[i].andaCarro();	
+						if(getCar(i) != null)					//Caso o carro exista, ele anda;
+							car[i].andaCarro();
 		
 			break;
 

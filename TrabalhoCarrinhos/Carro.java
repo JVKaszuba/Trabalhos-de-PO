@@ -82,7 +82,7 @@ public class Carro {
         System.out.println("ID: "               + this.getId());
         System.out.println("Distancia: "        + this.getDistanciaPercorrida() + " Km");
         System.out.println("Combustivel: "      + this.getCombustivel() + " L");
-        System.out.println("Valor de venda: "   + df1.format(this.getValorVenda()));
+        System.out.println("Valor de venda: R$"   + df1.format(this.getValorVenda()));
 
         if(this.getIpva())
             System.out.println("IPVA: Pago");
