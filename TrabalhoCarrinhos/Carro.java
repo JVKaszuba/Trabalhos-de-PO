@@ -3,7 +3,7 @@ package TrabalhoCarrinhos;
 import java.util.Random;
 
 public class Carro {
-//Atributos
+                                                        //Atributos
     private int id;
     private int distanciaPercorrida;
     private float combustivel;
@@ -11,24 +11,25 @@ public class Carro {
     private Roda[] roda = new Roda[4];
     private Boolean ipva;
 
-//Construtor
+                                                        //Construtor
     public Carro(int k) {
 
         Random rn = new Random();
 
         this.setId(k);                                
         this.setIpva(rn.nextBoolean());                 //Gera o valor do ipva, pago ou nao;
-        this.setCombustivel(2.5f);          //Inicia o Combustivel em 2.5L;
-        this.setValorVenda(rn.nextFloat(1000f));      //Gera o Valor de Venda;
-        this.setDistanciaPercorrida(0);
-        for(int i = 0; i < 4; i++)         //Gera as rodas, sorteando se estao calibradas;
+        this.setCombustivel(2.5f);                      //Inicia o Combustivel em 2.5L;
+        this.setValorVenda(rn.nextFloat(1000f));        //Gera o Valor de Venda;
+        this.setDistanciaPercorrida(0);                 //Inicia a distância percorrida;
+        for(int i = 0; i < 4; i++)                      //Gera as rodas, sorteando se estao calibradas;
             this.roda[i] = new Roda();  
     }
 
-//Getters
+                                                        //Getters
     public int getId() {
         return this.id;
     }
+    
     public int getDistanciaPercorrida() {
         return this.distanciaPercorrida;
     }
@@ -41,13 +42,15 @@ public class Carro {
     public float getCombustivel() {
         return this.combustivel;
     }
+
     public float getValorVenda() {
         return this.valorVenda;
     }
+
     public Boolean getIpva() {
         return this.ipva;
     }
-//Setters
+                                                        //Setters
 
     private void setId(int i) {
         this.id = i;
@@ -69,7 +72,7 @@ public class Carro {
         this.ipva = ipva;
     }
 
-//Status
+                                                        //Status
 
     public void status(){
         System.out.println();
@@ -92,7 +95,7 @@ public class Carro {
         }
     }
 
-//Funções
+                                                        //Métodos
 
     public void abastece(float quantComb) {
 

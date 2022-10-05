@@ -9,7 +9,7 @@ public class UsaSimulador {
         Simulador simulado = new Simulador();
         Scanner teclado = new Scanner(System.in);
 
-            int opc=0;
+            int opc = 0;
 
             //erro de validação nas funções para  0 < n > 19 (tamanho do vetor) car[num];
             do{ 
@@ -24,7 +24,7 @@ public class UsaSimulador {
                     }while(opc < 0 || opc > 13);
                 }
                 
-            }while(opc !=13);
+            }while(opc != 13);
             teclado.close();   
 
     }

@@ -3,18 +3,16 @@ package TrabalhoCarrinhos;
 import java.util.Scanner;
 
 public class Simulador {
-    
+																		//Atributos
     private static Carro[] car = new Carro[20];
     private static int quantCar = 0;
-
+																		//Construtor
     public Simulador() {
 
         //AddCar(); //está dando conflito, pois inicia somando 1 em quantCar sem o usuario ter pedido;
         //setCar(); 
     }
-
-//Getters
-
+																		//Getters
     public int getQuantCar() {
 
         return quantCar;
@@ -23,8 +21,7 @@ public class Simulador {
     private Carro getCar(int num){
             return car[num];
     }
-
-//Setters
+																		//Setters
     private void setCar() {
         int i;
         for( i=0; i<20; i++)            //Cria um carro com posição(i) = ID, se não houver outro no lugar; 
@@ -34,18 +31,17 @@ public class Simulador {
         car[i] = new Carro(i);
         AddCar();
     }
-
-//Funções
+																		//Métodos
     private static void AddCar() {
 
         quantCar++;
     }
+
     private static void RemoveCar(int num) {
 
         car[num] = null;
         quantCar--;
     }
-
 
     public void usaMenu(int val){
             Scanner teclado = new Scanner(System.in);
@@ -253,6 +249,6 @@ public class Simulador {
 			    }
 				
 		}
-    
-    }
+
+}
 
