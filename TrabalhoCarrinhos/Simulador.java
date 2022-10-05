@@ -1,8 +1,14 @@
 package TrabalhoCarrinhos;
 
 import java.util.Scanner;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
+import java.io.FileInputStream;
+import java.io.ObjectInputStream;
 
-public class Simulador {
+
+public class Simulador{
 																		//Atributos
     private static Carro[] car = new Carro[20];
     private static int quantCar = 0;
@@ -295,6 +301,7 @@ public class Simulador {
 					System.out.println("Não há carros na Pista. ");
 					break;
 				}
+				carroGravar(car);
 
 			break;
 					
@@ -303,8 +310,10 @@ public class Simulador {
 					System.out.println("Não há carros na Pista. ");
 					break;
 				}
+				carroLer();
 
 			break;
+			
 			case 13:
 				System.out.println("Fim ");
 				teclado.close();
@@ -312,5 +321,44 @@ public class Simulador {
 			}		
 		}
 
+
+
+	private void carroLer() {
+		File lista = new File("Lista.dat");
+		try{
+			FileInputStream fin = new FileInputStream(lista);
+			ObjectInputStream oin = new ObjectInputStream(fin);
+
+			Carro[] listaArq = (Carro[]) oin.readObject();
+			oin.close();
+			fin.close();
+
+			for(Carro p :listaArq){
+				p.status();
+			}
+		}
+		catch(Exception ex){
+		System.out.println("Erro: " + ex.toString());
+		} 
+    }
+	
+	private void carroGravar(Carro car[]) {
+
+		File arquivo = new File("Lista.dat");
+		try{
+			FileOutputStream fout = new FileOutputStream(arquivo);
+			ObjectOutputStream oos = new ObjectOutputStream(fout);
+
+			oos.writeObject(car);
+			oos.flush();
+			oos.close();
+			fout.close();
+		}
+		catch(Exception ex){
+			System.out.println("Erro: " + ex.toString());
+		}
+	}
 }
+
+
 

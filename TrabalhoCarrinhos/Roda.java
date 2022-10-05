@@ -1,8 +1,9 @@
 package TrabalhoCarrinhos;
 
+import java.io.Serializable;
 import java.util.Random;
 
-public class Roda {
+public class Roda implements Serializable {
 
                                                         //Atributos
     private Boolean calibragem;

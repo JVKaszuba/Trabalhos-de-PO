@@ -1,9 +1,10 @@
 package TrabalhoCarrinhos;
 
+import java.io.Serializable;
 import java.text.DecimalFormat;
 import java.util.Random;
 
-public class Carro {
+public class Carro implements Serializable{
                                                         //Atributos
     private int id;
     private int distanciaPercorrida;
