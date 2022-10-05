@@ -334,7 +334,8 @@ public class Simulador{
 			fin.close();
 
 			for(Carro p :listaArq){
-				p.status();
+				if(p != null)
+					p.status();
 			}
 		}
 		catch(Exception ex){
