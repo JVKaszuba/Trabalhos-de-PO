@@ -1,5 +1,6 @@
 package TrabalhoCarrinhos;
 
+import java.text.DecimalFormat;
 import java.util.Random;
 
 public class Carro {
@@ -16,13 +17,14 @@ public class Carro {
 
         Random rn = new Random();
 
-        this.setId(k);                                
-        this.setIpva(rn.nextBoolean());                 //Gera o valor do ipva, pago ou nao;
-        this.setCombustivel(2.5f);                      //Inicia o Combustivel em 2.5L;
+        this.setId(k);
+        this.setDistanciaPercorrida(0);               //Inicia a distância percorrida;
+        this.setCombustivel(2.5f);          //Inicia o Combustivel em 2.5L;
         this.setValorVenda(rn.nextFloat(1000f));        //Gera o Valor de Venda;
-        this.setDistanciaPercorrida(0);                 //Inicia a distância percorrida;
         for(int i = 0; i < 4; i++)                      //Gera as rodas, sorteando se estao calibradas;
-            this.roda[i] = new Roda();  
+            this.roda[i] = new Roda();                                  
+        this.setIpva(rn.nextBoolean());                 //Gera o valor do ipva, pago ou nao;
+           
     }
 
                                                         //Getters
@@ -75,11 +77,12 @@ public class Carro {
                                                         //Status
 
     public void status(){
+        DecimalFormat df1 = new DecimalFormat("#.##");
         System.out.println();
         System.out.println("ID: "               + this.getId());
         System.out.println("Distancia: "        + this.getDistanciaPercorrida() + " Km");
         System.out.println("Combustivel: "      + this.getCombustivel() + " L");
-        System.out.println("Valor de venda: "   + this.getValorVenda());
+        System.out.println("Valor de venda: "   + df1.format(this.getValorVenda()));
 
         if(this.getIpva())
             System.out.println("IPVA: Pago");
@@ -87,6 +90,7 @@ public class Carro {
             System.out.println("IPVA: Nao Pago");
 
         System.out.println();
+            
         for(int i = 0; i < 4; i++){
             if(this.getRodas(i))
                 System.out.println("Roda: " + i + " Calibrada. ");
