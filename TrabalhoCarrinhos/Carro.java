@@ -169,7 +169,7 @@ public class Carro implements Serializable{
         for(int i = 0; i < this.distanciaPercorrida; i++) {System.out.print(" ");}
         System.out.print(" __/  |_ \\_\n");
         for(int i = 0; i < this.distanciaPercorrida; i++) {System.out.print(" ");}
-        System.out.print("|  _     _ ``.\n");
+        System.out.print("|  _  " + getId() + "  _ ``.\n");
         for(int i = 0; i < this.distanciaPercorrida; i++) {System.out.print(" ");}
         System.out.print("'-(_)---(_)--'\n\n\n");
     }

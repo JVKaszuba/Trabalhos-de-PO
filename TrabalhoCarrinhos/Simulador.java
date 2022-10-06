@@ -315,8 +315,7 @@ public class Simulador{
 				}
 
 				for(i = 0; i < 20; i++) {							//Imprime todos os carros na pista		
-					if(car[i] != null) {
-						System.out.println("Carro com ID: " + car[i].getId());	
+					if(car[i] != null) {	
 						car[i].desenhaCarro();
 					}		
 				}
