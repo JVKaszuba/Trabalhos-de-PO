@@ -12,12 +12,6 @@ public class Simulador{
 																		//Atributos
     private static Carro[] car = new Carro[20];
     private static int quantCar = 0;
-																		//Construtor
-    public Simulador() {
-
-        //AddCar(); //está dando conflito, pois inicia somando 1 em quantCar sem o usuario ter pedido;
-        //setCar(); 
-    }
 																		//Getters
     public int getQuantCar() {
 
@@ -334,11 +328,7 @@ public class Simulador{
 					
 			case 12:
 
-				if(quantCar == 0){
-					System.out.println("Não há carros na Pista. ");
-					break;
-				}
-				carroLer();
+				carroLer(car);
 
 			break;
 			
@@ -349,13 +339,14 @@ public class Simulador{
 			}		
 		}
 
-	private void carroLer() {
+	private void carroLer(Carro car[]) {
 		File lista = new File("Lista.dat");
+
 		try{
 			FileInputStream fin = new FileInputStream(lista);
 			ObjectInputStream oin = new ObjectInputStream(fin);
 
-			Carro[] listaArq = (Carro[]) oin.readObject();
+			Carro[] listaArq = (Carro[])oin.readObject();
 			oin.close();
 			fin.close();
 
@@ -366,7 +357,8 @@ public class Simulador{
 		}
 		catch(Exception ex){
 		System.out.println("Erro: " + ex.toString());
-		} 
+		}
+		
     }
 	
 	private void carroGravar(Carro car[]) {
