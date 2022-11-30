@@ -2,7 +2,6 @@ import java.util.Scanner;
 
 public class Simulador2 {
     private static Veiculo[] veic = new Veiculo[20];
-    private static VeiculoMotorizado[] motor = new  VeiculoMotorizado[1];
     private static int quantCar = 0;
 
     
