@@ -10,7 +10,8 @@ import java.io.ObjectInputStream;
 
 public class Simulador{
 																		//Atributos
-    private static Carro[] car = new Carro[20];
+    private static Veiculo[] car = new Veiculo[20];
+	private static Esportivo[] esp = new Esportivo[20];
     private static int quantCar = 0;
 																		//Getters
     public int getQuantCar() {
@@ -18,18 +19,22 @@ public class Simulador{
         return quantCar;
     }
 
-    private Carro getCar(int num){
+    private Veiculo getCar(int num){
             return car[num];
     }
 																		//Setters
-    private int setCar() {
+    private int setCar(char Tipo) {
         int i;
         for( i=0; i<20; i++)            //Cria um carro com posição(i) = ID, se não houver outro no lugar; 
             if(car[i]==null)
                 break;
                     
-        car[i] = new Carro(i);
+        car[i] = new Veiculo();
         AddCar();
+		
+		if(Tipo == "E"){
+			esp[i] = new Esportivo();
+		}
 		return i;
     }
 																		//Métodos
@@ -48,7 +53,7 @@ public class Simulador{
 		Scanner teclado = new Scanner(System.in);
 		int num, i, npneu, dd;
 		float num2;
-
+		char Tipo;
 			switch(val) {
 			case 0:                                                 //Caso base;
 				
@@ -72,6 +77,16 @@ public class Simulador{
 			break;
 			case 1:                                                 //Adiciona um veiculo;
 				
+				System.out.println("Escolha um Tipo (B, M, C, E)");
+					      											//Verifica se o carro existe;
+					System.out.println("Escolha um Tipo (B, M, C, E)");   
+					Tipo = teclado.nextChar();
+					setCar(Tipo);
+					/*if(num < 0 || num > 19 || car[num] == null){
+						System.out.println("Valor invalido. ");
+						dd = 99;
+					}*/
+							
 				if(this.getQuantCar() > 19){
 					System.out.println("Numero max atingido. ");
 					break;
@@ -159,7 +174,7 @@ public class Simulador{
 						
 				}while(car[num]==null);
 
-				car[num].andaCarro();
+				car[num].mover();
 
 			break;
 
@@ -171,7 +186,7 @@ public class Simulador{
 				}	
 				for( i = 0; i < 20; i++)
 						if(getCar(i) != null)					//Caso o carro exista, ele anda;
-							car[i].andaCarro();
+							car[i].mover();
 		
 			break;
 
@@ -295,9 +310,9 @@ public class Simulador{
 				}while(dd < 0 || dd > 1);
 
 				if(dd == 1 )                                       
-					car[num].calibraCarro();
+					car[num].calibraVeiculo(4);
 				else                                              
-					car[num].esvaziaCarro();
+					car[num].esvaziaVeiculo(4);
 
 			break;
 
@@ -339,18 +354,18 @@ public class Simulador{
 			}		
 		}
 
-	private void carroLer(Carro car[]) {
+	private void carroLer(Veiculo car[]) {
 		File lista = new File("Lista.dat");
 
 		try{
 			FileInputStream fin = new FileInputStream(lista);
 			ObjectInputStream oin = new ObjectInputStream(fin);
 
-			Carro[] listaArq = (Carro[])oin.readObject();
+			Veiculo[] listaArq = (Veiculo[])oin.readObject();
 			oin.close();
 			fin.close();
 
-			for(Carro p :listaArq){
+			for(Veiculo p :listaArq){
 				if(p != null)
 					p.status();
 			}
@@ -361,7 +376,7 @@ public class Simulador{
 		
     }
 	
-	private void carroGravar(Carro car[]) {
+	private void carroGravar(Veiculo car[]) {
 
 		File arquivo = new File("Lista.dat");
 		try{
@@ -377,4 +392,41 @@ public class Simulador{
 			System.out.println("Erro: " + ex.toString());
 		}
 	}
+	public void mover() {
+        int flag = 0;
+        for(int i = 0; i < 4; i++){
+            if(this.getRodas(i) == false) {
+                System.out.println("Veiculo "+ this.getId() + " as rodas não estão calibradas. ");       //  Verifica se as rodas estão calibradas;
+                flag = 99;
+                break;
+            }
+        }
+        if(getIpva() == false){
+            flag = 99;
+            System.out.println("Veiculo "+ this.getId() + " o IPVA não está pago. ");
+        }
+        if(getCombustivel() < 0.55){
+            flag = 99;
+            System.out.println("Veiculo "+ this.getId() + " não possui gasolina sufuciente. ");
+        }
+        if(flag == 0){
+            this.setDistanciaPercorrida(getDistanciaPercorrida() + 5);  //Acrescenta Distancia Percorrida;
+            this.setCombustivel(getCombustivel() - (float) 0.55);       //Gasta a gasolina para andar
+        }
+    }
+    public void desenhaCarro() {
+
+        for(int i = 0; i < this.distanciaPercorrida; i++) {System.out.print(" ");}
+        System.out.print("    ____\n");
+        for(int i = 0; i < this.distanciaPercorrida; i++) {System.out.print(" ");}
+        System.out.print(" __/  |_ \\_\n");
+        for(int i = 0; i < this.distanciaPercorrida; i++) {System.out.print(" ");}
+        System.out.print("|  _  " + getId() + "  _ ``.\n");
+        for(int i = 0; i < this.distanciaPercorrida; i++) {System.out.print(" ");}
+        System.out.print("'-(_)---(_)--'\n\n\n");
+    }
+	public void pagaIPVA() {
+
+        if(this.ipva == false) {this.ipva = true;}
+    }
 }
