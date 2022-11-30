@@ -29,6 +29,6 @@ public class Roda implements Serializable {
                                                         //toString
     public String toString() {
 
-        return "A roda está calibrada? " + this.getCalibragem();
+        return this.getCalibragem() +" \n";
     }
 }

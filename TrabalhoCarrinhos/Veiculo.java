@@ -1,21 +1,24 @@
-import java.util.Arrays;
-
 public abstract class Veiculo {
     private int id;
     private int distanciaPercorrida;
     private int quatRodas;
-    private Roda roda[] = new Roda[quatRodas];
+    private Roda roda[] = new Roda[4];
+    private char tipo;
 
     //Construtor;
-    public Veiculo(int id, int quatRodas) {
+    public Veiculo(int id, int quatRodas, char tipo) {
         this.setId(id);
         this.setDistanciaPercorrida(0); 
         this.setQuatRodas(quatRodas);
         for(int i = 0; i < quatRodas; i++)                      
             this.roda[i] = new Roda(); 
+        this.setTipo(tipo);
     }
 
     //Getters;
+    public char getTipo(){
+        return this.tipo;
+    }
     public int getId() {
         return this.id;
     }
@@ -31,6 +34,9 @@ public abstract class Veiculo {
 
 
     //Setters;
+    public void setTipo(char tipo){
+        this.tipo = tipo;
+    }
     public void setId(int id) {
         this.id = id;
     }
@@ -44,7 +50,8 @@ public abstract class Veiculo {
 
     //Metodos;
     public abstract void mover();
-    public abstract void desenhaCarro();
+    public abstract void desenhaVeiculo();
+
 
     public void calibraPneu(int npneu) {
 
@@ -55,11 +62,11 @@ public abstract class Veiculo {
 
         if(roda[npneu].getCalibragem() == true) {roda[npneu].setCalibragem(false);}
     }
-
+    
     public String toString() {
-        return "Veiculo [id=" + id + ", distanciaPerc=" + distanciaPercorrida + ", Rodas=" + Arrays.toString(roda)
-                + ", quatRodas=" + quatRodas + "]";
+    return  "Tipo = " + tipo + "\nID = " + id + "\nDistanciaPercorrida = " + distanciaPercorrida + "\nQuatRodas = " + quatRodas;
     }
+
     public void calibraVeiculo(int quatRodas) {
 
         for(int i = 0; i < quatRodas; i++) {this.calibraPneu(i);}

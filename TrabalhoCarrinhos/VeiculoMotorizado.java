@@ -2,31 +2,31 @@ import java.util.Random;
 
 public abstract class VeiculoMotorizado extends Veiculo {
     //Atributos Static;
-    private static float gastoMoto;
-    private static float gastoPasseio;
-    private static float gastoEsporte;
+    private static double gastoMoto = 0.25;
+    private static double gastoPasseio = 0.75;
+    private static double gastoEsporte = 2.3;
 
     //Atributos;
     private float combustivel;
     private Boolean IPVA;
     private float valorIPVA;
-    Random rn;
     //Construtor;
-        public VeiculoMotorizado(int id, int quantRodas, String string) {
-            super(id, quantRodas);
+        public VeiculoMotorizado(int id, int quantRodas, char string) {
+            super(id, quantRodas, string);
+            final Random rn = new Random();
             this.setCombustivel(2.5f);
             this.IPVA = rn.nextBoolean();
             this.setValorIPVA(500); //FAZER CALCULOS PARA CADA VEICULO;
     }
 
     //Getters;
-    public static float getGastoEsporte() {
+    public static double  getGastoEsporte() {
          return gastoEsporte;
      }
-    public static float getGastoPasseio() {
+    public static double  getGastoPasseio() {
         return gastoPasseio;
     }
-    public static float getGastoMoto() {
+    public static double  getGastoMoto() {
         return gastoMoto;
     }
     public float getCombustivel() {
@@ -49,15 +49,19 @@ public abstract class VeiculoMotorizado extends Veiculo {
     public static void setGastoMoto(float gastoMoto) {
         VeiculoMotorizado.gastoMoto = gastoMoto;
     }
+
+    //
     public void setCombustivel(float combustivel) {
         this.combustivel = combustivel;
     }
     public void setValorIPVA(float valor) {
-        this.combustivel = valor; //FAZER OS CALCULOS PRA CADA;
+        this.valorIPVA = valor; //FAZER OS CALCULOS PRA CADA;
     }
 
     //Metodos
     public abstract void ValorIPVA();
+
+  
     public void abastece(float quantComb) {
 
         float quantMax = 55 - this.combustivel;
@@ -70,9 +74,11 @@ public abstract class VeiculoMotorizado extends Veiculo {
         
     }
 
+    @Override
     public String toString() {
-        return "VeiculoMotorizado [combustive=" + combustivel + ", valorIPVA=" + valorIPVA + "]";
+        return super.toString() + "\nCombustivel = " + combustivel + "\nIPVA = " + IPVA + "\nValorIPVA = " + valorIPVA;
     }
+
     public void pagaIPVA() {
 
         if(this.IPVA == false) {this.IPVA = true;}
