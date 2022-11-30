@@ -1,4 +1,3 @@
-package TrabalhoCarrinhos;
 
 import java.io.Serializable;
 import java.util.Random;

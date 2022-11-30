@@ -1,6 +1,4 @@
 import java.util.Random;
-import java.io.Serializable;
-import java.text.DecimalFormat;
 
 public abstract class VeiculoMotorizado extends Veiculo {
     //Atributos Static;
@@ -12,12 +10,12 @@ public abstract class VeiculoMotorizado extends Veiculo {
     private float combustivel;
     private Boolean IPVA;
     private float valorIPVA;
-
+    Random rn;
     //Construtor;
-        public VeiculoMotorizado(int id, int quantRodas, char Tipo) {
+        public VeiculoMotorizado(int id, int quantRodas, String string) {
             super(id, quantRodas);
             this.setCombustivel(2.5f);
-            this.setIPVA(rn.nextBoolean());
+            this.IPVA = rn.nextBoolean();
             this.setValorIPVA(500); //FAZER CALCULOS PARA CADA VEICULO;
     }
 
@@ -55,10 +53,11 @@ public abstract class VeiculoMotorizado extends Veiculo {
         this.combustivel = combustivel;
     }
     public void setValorIPVA(float valor) {
-        this.combustive = valor; //FAZER OS CALCULOS PRA CADA;
+        this.combustivel = valor; //FAZER OS CALCULOS PRA CADA;
     }
 
     //Metodos
+    public abstract void ValorIPVA();
     public void abastece(float quantComb) {
 
         float quantMax = 55 - this.combustivel;
@@ -76,7 +75,7 @@ public abstract class VeiculoMotorizado extends Veiculo {
     }
     public void pagaIPVA() {
 
-        if(this.ipva == false) {this.ipva = true;}
+        if(this.IPVA == false) {this.IPVA = true;}
     }
     
 }

@@ -4,7 +4,7 @@ public abstract class Veiculo {
     private int id;
     private int distanciaPercorrida;
     private int quatRodas;
-    private Roda Rodas[] = new Roda[quatRodas];
+    private Roda roda[] = new Roda[quatRodas];
 
     //Construtor;
     public Veiculo(int id, int quatRodas) {
@@ -57,7 +57,7 @@ public abstract class Veiculo {
     }
 
     public String toString() {
-        return "Veiculo [id=" + id + ", distanciaPerc=" + distanciaPercorrida + ", Rodas=" + Arrays.toString(Rodas)
+        return "Veiculo [id=" + id + ", distanciaPerc=" + distanciaPercorrida + ", Rodas=" + Arrays.toString(roda)
                 + ", quatRodas=" + quatRodas + "]";
     }
     public void calibraVeiculo(int quatRodas) {

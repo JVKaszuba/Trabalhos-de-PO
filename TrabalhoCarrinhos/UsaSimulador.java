@@ -1,18 +1,15 @@
-package TrabalhoCarrinhos;
 
 import java.util.Scanner;
 
-public class UsaSimulador {  
-    
+public class UsaSimulador {
     public static void main(String[] args) {
-        
-        Simulador simulado = new Simulador();
+    
         Scanner teclado = new Scanner(System.in);
 
         int opc = 0;
 
         do{ 
-            simulado.usaMenu(opc);
+            Simulador2.Menu(opc);
             System.out.print("\nEscolha: ");     
             opc = teclado.nextInt();
 
@@ -24,7 +21,7 @@ public class UsaSimulador {
                 }while(opc < 0 || opc > 13);
             }
             if(opc == 13)
-                simulado.usaMenu(opc);
+                Simulador2.Menu(opc);
                 
         }while(opc != 13);
         teclado.close();   
