@@ -11,13 +11,13 @@ public abstract class VeiculoMotorizado extends Veiculo {
     private Boolean IPVA;
     private float valorIPVA;
     //Construtor;
-        public VeiculoMotorizado(int id, int quantRodas, char string) {
+        public VeiculoMotorizado(int id, int quantRodas, char string, float valorIPVA) {
             super(id, quantRodas, string);
             final Random rn = new Random();
             this.setCombustivel(2.5f);
             this.IPVA = rn.nextBoolean();
-            this.setValorIPVA(500); //FAZER CALCULOS PARA CADA VEICULO;
-    }
+            this.valorIPVA = valorIPVA;
+        }
 
     //Getters;
     public static double  getGastoEsporte() {
@@ -54,13 +54,8 @@ public abstract class VeiculoMotorizado extends Veiculo {
     public void setCombustivel(float combustivel) {
         this.combustivel = combustivel;
     }
-    public void setValorIPVA(float valor) {
-        this.valorIPVA = valor; //FAZER OS CALCULOS PRA CADA;
-    }
 
     //Metodos
-    public abstract void ValorIPVA();
-
   
     public void abastece(float quantComb) {
 

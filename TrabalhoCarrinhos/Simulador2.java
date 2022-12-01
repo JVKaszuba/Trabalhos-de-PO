@@ -13,13 +13,13 @@ public class Simulador2 {
 
         switch (Tipo){
             case 'B':
-                veic[i] = new Esportivo(i);
+                veic[i] = new Bicileta(i);
             break;
             case 'M':
-                veic[i] = new Esportivo(i);
+                veic[i] = new Motocicleta(i);
             break;
             case 'C':
-                veic[i] = new Esportivo(i);
+                veic[i] = new CarroPasseio(i);
             break;
             case 'E':
                 veic[i] = new Esportivo(i);
@@ -82,7 +82,7 @@ public class Simulador2 {
                     System.out.print("Escolha um Tipo (B, M, C, E): ");											//Verifica se o carro existe; 
                     Tipo = teclado.next().toUpperCase().charAt(0);
 
-                    if( Tipo !='B' && Tipo !='M' && Tipo !='C' && Tipo !='E' ){
+                    if( Tipo !='B' && Tipo !='M' && Tipo !='C' && Tipo !='E' ){ //Verifica se o Tipo eh valido
                             System.out.println("Valor invalido. ");
                             dd = 99;
                         }
@@ -90,20 +90,20 @@ public class Simulador2 {
                 }while(dd == 99);
 					
 				if(getQuantCar() > 19){
-					System.out.println("Numero max atingido. ");
+					System.out.println("Numero max atingido. ");                //Verifica se tem o Maximo de veiculos
 					break;
 				}
 				else
-					System.out.println("Veiculo adicionado com ID: " + setCar(Tipo));
+					System.out.println("Veiculo adicionado com ID: " + setCar(Tipo));   //Adiciiona o Veiculo
 
 			break;
             case 2:                                                 //Remove um veiculo;
 				
-				if(quantCar == 0){									//Verifica se não há carros;
+				if(quantCar == 0){									//Verifica se não há veiculos;
 					System.out.println("Não há carros na Pista. ");	
 					break;
 				}
-				do{       											//Verifica se o carro existe;
+				do{       											//Verifica se o veiculo existe;
 					dd = 0;
 					System.out.print("\nQual o ID do veiculo: ");   
 					num = teclado.nextInt();
@@ -115,16 +115,16 @@ public class Simulador2 {
 							
 				}while(dd == 99);
 				
-				System.out.println("Veiculo com ID " + veic[num].getId() + " removido. ");
+				System.out.println("Veiculo com ID " + veic[num].getId() + " removido. ");  //Remove o veiculo
 				RemoveCar(num);
 					
 			break;
             case 3:                                                 //Abastece um veiculo;
-				if(quantCar == 0){									//Verifica se não há carros;
+				if(quantCar == 0){									//Verifica se não há veiculos;
 					System.out.println("Não há carros na Pista. ");
 					break;
 				}    
-				do{        											//Verifica se o carro existe;
+				do{        											//Verifica se o veiculo existe e se tem combustivel;
 					
 					dd = 0;
 					System.out.print("\nQual o ID do veiculo: ");   
