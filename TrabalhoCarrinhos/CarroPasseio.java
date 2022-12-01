@@ -19,13 +19,13 @@ public class CarroPasseio extends VeiculoMotorizado{
             flag = 99;
             System.out.println("Veiculo "+ this.getId() + " o IPVA não está pago. ");
         }
-        if(getCombustivel() < 0.75){
+        if(getCombustivel() < 0.75*5){                                                              //Verifica se tem gasolina sufuciente
             flag = 99;
             System.out.println("Veiculo "+ this.getId() + " não possui gasolina sufuciente. ");
         }
         if(flag == 0){
-            this.setDistanciaPercorrida(getDistanciaPercorrida() + 5);  //Acrescenta Distancia Percorrida;
-            this.setCombustivel(getCombustivel() - (float) 0.75);       //Gasta a gasolina para andar
+            this.setDistanciaPercorrida(getDistanciaPercorrida() + 5);                              //Acrescenta Distancia Percorrida;
+            this.setCombustivel(getCombustivel() - (float) 0.75*5);                                   //Gasta a gasolina para andar
         }
         
     }

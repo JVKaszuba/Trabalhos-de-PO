@@ -19,13 +19,13 @@ public class Motocicleta extends VeiculoMotorizado {
             flag = 99;
             System.out.println("Veiculo "+ this.getId() + " o IPVA não está pago. ");
         }
-        if(getCombustivel() < 0.25){
+        if(getCombustivel() < 0.25*3){                                                                      //Verifica se tem gasolina sufuciente
             flag = 99;
             System.out.println("Veiculo "+ this.getId() + " não possui gasolina sufuciente. ");
         }
         if(flag == 0){
-            this.setDistanciaPercorrida(getDistanciaPercorrida() + 10);  //Acrescenta Distancia Percorrida;
-            this.setCombustivel(getCombustivel() - (float) 0.25);       //Gasta a gasolina para andar
+            this.setDistanciaPercorrida(getDistanciaPercorrida() + 3);                                      //Acrescenta Distancia Percorrida;
+            this.setCombustivel(getCombustivel() - (float) 0.25*3);                                         //Gasta a gasolina para andar
         }
         
     }
