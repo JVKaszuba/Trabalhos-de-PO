@@ -3,7 +3,6 @@ public class Motocicleta extends VeiculoMotorizado {
     //Construtor;
     public Motocicleta(int id) {
         super(id, 2, 'M', (float) (500*0.75));
-
     }
 
     //Metodos;
@@ -40,5 +39,4 @@ public class Motocicleta extends VeiculoMotorizado {
         System.out.print("(_)'==(_)\n");
         
     }
-    
 }
