@@ -7,8 +7,8 @@ public class Simulador2 {
     
     private static int setCar(char Tipo) {
         int i;
-        for( i=0; i<20; i++)            //Cria um carro com posição(i) = ID, se não houver outro no lugar; 
-            if(veic[i]==null)
+        for( i=0; i<20; i++)                                                                    //Cria um carro com posição(i) = ID;
+            if(veic[i]==null)                                                                   // se não houver outro no lugar; 
                 break;
 
         switch (Tipo){
@@ -52,7 +52,7 @@ public class Simulador2 {
 
         char Tipo;
             switch(val) {
-            case 0:                                                 //Caso base;
+            case 0:                                                                                 //Apresenta o Menu;
                 
                 System.out.println();
                 System.out.println("\tSimulador de Corrida de Veículos\n");
@@ -75,14 +75,14 @@ public class Simulador2 {
                 
 
             break;
-			case 1:                                                 //Adiciona um veiculo;
+			case 1:                                                                                  //Adiciona um veiculo;
                 do{
 
                     dd = 0;    
-                    System.out.print("Escolha um Tipo (B, M, C, E): ");											//Verifica se o carro existe; 
+                    System.out.print("Escolha um Tipo (B, M, C, E): ");								//Verifica o tipo do veiculo; 
                     Tipo = teclado.next().toUpperCase().charAt(0);
 
-                    if( Tipo !='B' && Tipo !='M' && Tipo !='C' && Tipo !='E' ){ //Verifica se o Tipo eh valido
+                    if( Tipo !='B' && Tipo !='M' && Tipo !='C' && Tipo !='E' ){ 
                             System.out.println("Valor invalido. ");
                             dd = 99;
                         }
@@ -90,20 +90,20 @@ public class Simulador2 {
                 }while(dd == 99);
 					
 				if(getQuantCar() > 19){
-					System.out.println("Numero max atingido. ");                //Verifica se tem o Maximo de veiculos
+					System.out.println("Numero max atingido. ");                                    //Verifica se tem o Maximo de veiculos
 					break;
 				}
 				else
-					System.out.println("Veiculo adicionado com ID: " + setCar(Tipo));   //Adiciiona o Veiculo
+					System.out.println("Veiculo adicionado com ID: " + setCar(Tipo));       
 
 			break;
-            case 2:                                                 //Remove um veiculo;
+            case 2:                                                                                 //Remove um veiculo;
 				
-				if(quantCar == 0){									//Verifica se não há veiculos;
+				if(quantCar == 0){									                                //Verifica se não há veiculos;
 					System.out.println("Não há carros na Pista. ");	
 					break;
 				}
-				do{       											//Verifica se o veiculo existe;
+				do{       											                                //Verifica se o veiculo existe;
 					dd = 0;
 					System.out.print("\nQual o ID do veiculo: ");   
 					num = teclado.nextInt();
@@ -115,16 +115,17 @@ public class Simulador2 {
 							
 				}while(dd == 99);
 				
-				System.out.println("Veiculo com ID " + veic[num].getId() + " removido. ");  //Remove o veiculo
+				System.out.println("Veiculo com ID " + veic[num].getId() + " removido. ");
 				RemoveCar(num);
 					
 			break;
-            case 3:                                                 //Abastece um veiculo;
-				if(quantCar == 0){									//Verifica se não há veiculos;
+            case 3:                                                                                 //Abastece um veiculo;
+				
+                if(quantCar == 0){									                                //Verifica se não há veiculos;
 					System.out.println("Não há carros na Pista. ");
 					break;
 				}    
-				do{        											//Verifica se o veiculo existe e se tem combustivel;
+				do{        											                                //Verifica se o veiculo existe e se pode ser abastecido;
 					
 					dd = 0;
 					System.out.print("\nQual o ID do veiculo: ");   
@@ -137,7 +138,7 @@ public class Simulador2 {
 							
 				}while(dd == 99);
 				
-				do{ 												//Valida para abastecer valores positivos
+				do{ 												                                //Valida para abastecer valores positivos
 
 					dd = 0;
 					System.out.print("Quantidade de gasolina em L: ");
@@ -148,21 +149,21 @@ public class Simulador2 {
 					}
 
 				}while(dd == 99);
-                
-				if(((VeiculoMotorizado) veic[num]).getCombustivel() + num2 > 55)
-					num2 = 55 - ((VeiculoMotorizado) veic[num]).getCombustivel();
+
+				if(((VeiculoMotorizado) veic[num]).getCombustivel() + num2 > 55)                    //Apos verificado se pode ser abastecido,
+					num2 = 55 - ((VeiculoMotorizado) veic[num]).getCombustivel();                   //faz um casting para usar os metodos filhos;
 
                 ((VeiculoMotorizado) veic[num]).abastece(num2);
 				System.out.println("Veiculo com ID " + veic[num].getId() + " abastecido com " + num2 + " Litros de gasolina ");                         
 
 			break;
-            case 4:														//Faz um veiculo andar;
+            case 4:														                            //Faz um veiculo andar;
 				
-				if(quantCar == 0){										//Verifica se não há carros;
+				if(quantCar == 0){										                            //Verifica se não há carros;
 					System.out.println("Não há carros na Pista. ");
 					break;
 				}
-				do{       												//Verifica se o carro existe;
+				do{       												                            //Verifica se o veiculo existe;
 							
 					System.out.print("\nQual o ID do veiculo: ");   
 					num = teclado.nextInt();
@@ -175,10 +176,9 @@ public class Simulador2 {
 				veic[num].mover();
 
 			break;
-            case 5:													//Movimenta todos os veiculos
+            case 5:													                                //Movimenta todos os veiculos por Tipo;
                 
-
-				if(quantCar == 0){									//Verifica se não há carros;
+				if(quantCar == 0){									                                //Verifica se não há veiculos;
 					System.out.println("Não há carros na Pista. ");
 					break;
                 }
@@ -186,7 +186,7 @@ public class Simulador2 {
                 do{
 
                     dd = 0;    
-                    System.out.print("Escolha um Tipo (B, M, C, E): ");											//Verifica se o carro existe; 
+                    System.out.print("Escolha um Tipo (B, M, C, E): ");								//Verifica  o tipo do veiculo; 
                     Tipo = teclado.next().toUpperCase().charAt(0);
 
                     if( Tipo !='B' && Tipo !='M' && Tipo !='C' && Tipo !='E' ){
@@ -197,29 +197,29 @@ public class Simulador2 {
                 }while(dd == 99);
 
 				for( i = 0; i < 20; i++)
-						if(getCar(i) != null && getCar(i).getTipo() == Tipo)				//Caso o carro exista, ele anda;
-							veic[i].mover();
+						if(getCar(i) != null && getCar(i).getTipo() == Tipo)				        //Caso o veiculo exista e seja do Tipo certo,
+							veic[i].mover();                                                        //ele anda;
 		
 			break;
-            case 6:													//Movimenta todos os veiculos
+            case 6:													                                //Movimenta todos os veiculos
 			
-				if(quantCar == 0){									//Verifica se não há carros;
+				if(quantCar == 0){								                                    //Verifica se não há veiculo;
 					System.out.println("Não há carros na Pista. ");
 					break;
 				}	
 				for( i = 0; i < 20; i++)
-						if(getCar(i) != null)					//Caso o carro exista, ele anda;
+						if(getCar(i) != null)					                                    //Caso o veiculo exista, ele anda;
 							veic[i].mover();
 		
 			break;
-            case 7:                                                 //Imprime os Status de todos os veiculos;
+            case 7:                                                                                 //Imprime os Status de todos os veiculos;
 			
-				if(quantCar == 0){									//Verifica se não há carros;
+				if(quantCar == 0){						                                            //Verifica se não há veiculos;
 					System.out.println("Não há carros na Pista. ");
 					break;
 				}    
 				for(i = 0; i < 20; i++){
-						if(getCar(i) != null){						//Caso o carro exista, imprime o Status;
+						if(getCar(i) != null){						                                 //Caso o veiculo exista, imprime o Status;
 							System.out.println("\n===== Status =====");
 							System.out.println(getCar(i).toString());
                             
@@ -227,16 +227,16 @@ public class Simulador2 {
 					}
 					
 			break;
-            case 8:                                                 //Imprime os Status de todos os veiculos;
+            case 8:                                                                                 //Imprime os Status de todos os veiculos do Tipo;
 			
-				if(quantCar == 0){									//Verifica se não há carros;
+				if(quantCar == 0){									                                //Verifica se não há carros;
 					System.out.println("Não há carros na Pista. ");
 					break;
 				}
                 do{
 
                     dd = 0;    
-                    System.out.print("Escolha um Tipo (B, M, C, E): ");											//Verifica se o carro existe; 
+                    System.out.print("Escolha um Tipo (B, M, C, E): ");							    //Verifica se o Tipo; 
                     Tipo = teclado.next().toUpperCase().charAt(0);
 
                     if( Tipo !='B' && Tipo !='M' && Tipo !='C' && Tipo !='E' ){
@@ -246,21 +246,21 @@ public class Simulador2 {
                         
                 }while(dd == 99);
 				for(i = 0; i < 20; i++){
-						if(getCar(i) != null && getCar(i).getTipo() == Tipo){						//Caso o carro exista, imprime o Status;
-							System.out.println("\n===== Status =====");
+						if(getCar(i) != null && getCar(i).getTipo() == Tipo){						//Caso o veiculo exista e seja do tipo, 
+							System.out.println("\n===== Status =====");                             //imprime o Status;
 							System.out.println(getCar(i).toString());
                             
 						}    
 					}
 					
 			break;
-            case 9:                                                 //Esvaziar/Calibrar Pneu;
+            case 9:                                                                                 //Esvaziar/Calibrar um Pneu especifico;
 			
-            if(quantCar == 0){									//Verifica se não há carros;
+            if(quantCar == 0){									                                    //Verifica se não há veiculos;
                 System.out.println("Não há carros na Pista. ");
                 break;
             }    
-            do{       											//Verifica se o carro existe;
+            do{       											                                     //Verifica se o veiculo existe;
                         
                 dd = 0;
                 System.out.print("\nQual o ID do veiculo: ");   
@@ -273,7 +273,7 @@ public class Simulador2 {
                         
             }while(dd == 99);
             
-            do{    												//Escolhe entre Calibrar/Esvaziar;
+            do{    												                                     //Escolhe entre Calibrar/Esvaziar;
                 System.out.print("\nCalibrar(1) ou Esvaziar(0): ");
                 dd = teclado.nextInt();
                 if(dd < 0 || dd > 1)                            
@@ -287,10 +287,10 @@ public class Simulador2 {
                 else
                     numax = 4;
                 
-            if(dd == 1){										//Calibra o Pneu;
+            if(dd == 1){										                                     //Calibra o Pneu;
                 do{
                     System.out.print("\nQual o numero do pneu: ");
-                    npneu = teclado.nextInt();                  //Escolhe qual Pneu fazer a operação;
+                    npneu = teclado.nextInt();                                                       //Escolhe qual Pneu fazer a operação;
                     if(npneu < 0 || npneu > numax)
                         System.out.print("Valor invalido. ");
 
@@ -298,10 +298,10 @@ public class Simulador2 {
                 
                 veic[num].calibraPneu(npneu);                   
             }
-            else{                                             	//Esvazia o Pneu;
+            else{                                             	                                     //Esvazia o Pneu;
                 do{
                     System.out.print("\nQual o numero do pneu: ");
-                    npneu = teclado.nextInt();              	//Escolhe qual Pneu fazer a operação;
+                    npneu = teclado.nextInt();              	                                    //Escolhe qual Pneu fazer a operação;
                     if(npneu < 0 || npneu > numax)                                   
                         System.out.print("Valor invalido. ");
 
@@ -311,15 +311,15 @@ public class Simulador2 {
             }
         
             break;
-            case 10:                                                 //Esvaziar/Calibrar veiculo;
+            case 10:                                                                               //Calibrar todos os veiculo do Tipo;
 				
-				if(quantCar == 0){									//Verifica se não há carros;
+				if(quantCar == 0){									                               //Verifica se não há carros;
 					System.out.println("Não há carros na Pista. ");
 					break;
 				}    
 				do{
                     dd = 0;    
-                    System.out.print("Escolha um Tipo (B, M, C, E): ");											//Verifica se o carro existe; 
+                    System.out.print("Escolha um Tipo (B, M, C, E): ");							    //Verifica se o Tipo; 
                     Tipo = teclado.next().toUpperCase().charAt(0);
 
                     if( Tipo !='B' && Tipo !='M' && Tipo !='C' && Tipo !='E' ){
@@ -329,7 +329,7 @@ public class Simulador2 {
                         
                 }while(dd == 99);
 
-                if(Tipo == 'B' || Tipo == 'M')
+                if(Tipo == 'B' || Tipo == 'M')                                                      //Verifica o numero de pneus;
                     numax = 2;
                 else
                     numax = 4;
@@ -344,15 +344,15 @@ public class Simulador2 {
                 }
 
 			break;
-            case 11:                                                 //Esvaziar/Calibrar veiculo;
+            case 11:                                                                                //Esvaziar todos veiculos do Tipo;
 				
-				if(quantCar == 0){									//Verifica se não há carros;
+				if(quantCar == 0){									                                //Verifica se não há carros;
 					System.out.println("Não há carros na Pista. ");
 					break;
 				}    
 				do{
                     dd = 0;    
-                    System.out.print("Escolha um Tipo (B, M, C, E): ");											//Verifica se o carro existe; 
+                    System.out.print("Escolha um Tipo (B, M, C, E): ");							    //Verifica se o Tipo; 
                     Tipo = teclado.next().toUpperCase().charAt(0);
 
                     if( Tipo !='B' && Tipo !='M' && Tipo !='C' && Tipo !='E' ){
@@ -362,7 +362,7 @@ public class Simulador2 {
                         
                 }while(dd == 99);
 
-                if(Tipo == 'B' || Tipo == 'M')
+                if(Tipo == 'B' || Tipo == 'M')                                                       //Verifica o numero de pneus;
                     numax = 2;
                 else
                     numax = 4;
@@ -377,22 +377,22 @@ public class Simulador2 {
                 }
 
 			break;
-            case 12:
+            case 12:                                                                                //Imprimir pista de corrida;
 				
-				if(quantCar == 0){									//Verifica se não há carros;
+				if(quantCar == 0){									                                //Verifica se não há veiculos;
 					System.out.println("Não há carros na Pista. ");
 					break;
 				}
 
-				for(i = 0; i < 20; i++) {							//Imprime todos os carros na pista		
+				for(i = 0; i < 20; i++) {							
 					if(veic[i] != null) {	
 						veic[i].desenhaVeiculo();
 					}		
 				}
 
 			break;
-            case 13:
-            case 14:
+            case 13:                                                                            //Gravar veiculos em arquivo;                                                        
+            case 14:                                                                            // Ler veiculos do arquivo;
 
 			case 15:
             System.out.println("Fim ");
