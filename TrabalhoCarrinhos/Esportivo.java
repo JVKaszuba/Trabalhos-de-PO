@@ -5,6 +5,7 @@ public class Esportivo extends VeiculoMotorizado {
         super(id, 4, 'E', (float) (500*3.15));
     }
 
+    //Metodos;
     @Override
     public void desenhaVeiculo() {
         System.out.print("        __         \n");
@@ -38,5 +39,7 @@ public class Esportivo extends VeiculoMotorizado {
             this.setDistanciaPercorrida(getDistanciaPercorrida() + 10);                                 //Acrescenta Distancia Percorrida;
             this.setCombustivel(getCombustivel() - (float) 2.3*10);                                     //Gasta a gasolina para andar
         }
+        else
+            System.out.println("Não foi possivel mover. ");
     }
 }

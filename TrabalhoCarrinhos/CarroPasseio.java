@@ -1,10 +1,11 @@
 public class CarroPasseio extends VeiculoMotorizado{
-
+    
+    //Construtor;
     public CarroPasseio(int id) {
         super(id, 4, 'C',(float) (500*1.3));
-        //TODO Auto-generated constructor stub
     }
 
+    //Metodos;
     @Override
     public void mover() {
         int flag = 0;
@@ -19,15 +20,16 @@ public class CarroPasseio extends VeiculoMotorizado{
             flag = 99;
             System.out.println("Veiculo "+ this.getId() + " o IPVA não está pago. ");
         }
-        if(getCombustivel() < 0.75*5){                                                              //Verifica se tem gasolina sufuciente
+        if(getCombustivel() < 0.75*5){                                                                //Verifica se tem gasolina sufuciente
             flag = 99;
             System.out.println("Veiculo "+ this.getId() + " não possui gasolina sufuciente. ");
         }
         if(flag == 0){
-            this.setDistanciaPercorrida(getDistanciaPercorrida() + 5);                              //Acrescenta Distancia Percorrida;
+            this.setDistanciaPercorrida(getDistanciaPercorrida() + 5);                                //Acrescenta Distancia Percorrida;
             this.setCombustivel(getCombustivel() - (float) 0.75*5);                                   //Gasta a gasolina para andar
         }
-        
+        else
+            System.out.println("Não foi possivel mover. ");
     }
 
     @Override

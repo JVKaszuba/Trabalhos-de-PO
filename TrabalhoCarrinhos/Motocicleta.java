@@ -1,10 +1,12 @@
 public class Motocicleta extends VeiculoMotorizado {
 
+    //Construtor;
     public Motocicleta(int id) {
         super(id, 2, 'M', (float) (500*0.75));
 
     }
 
+    //Metodos;
     @Override
     public void mover() {
         int flag = 0;
@@ -25,9 +27,10 @@ public class Motocicleta extends VeiculoMotorizado {
         }
         if(flag == 0){
             this.setDistanciaPercorrida(getDistanciaPercorrida() + 3);                                      //Acrescenta Distancia Percorrida;
-            this.setCombustivel(getCombustivel() - (float) 0.25*3);                                         //Gasta a gasolina para andar
+            this.setCombustivel(getCombustivel() - (float) 0.25*3);                                         //Gasta a gasolina para andar;
         }
-        
+        else
+            System.out.println("Não foi possivel mover. ");
     }
 
     @Override

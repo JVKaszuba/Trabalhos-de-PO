@@ -1,10 +1,11 @@
 public class Bicileta extends Veiculo {
 
+    //Construtor;
     public Bicileta(int id) {
         super(id, 2, 'B');
-        //TODO Auto-generated constructor stub
     }
 
+    //Metodos;
     @Override
     public void mover() {
         int flag = 0;
@@ -15,10 +16,10 @@ public class Bicileta extends Veiculo {
                 break;
             }
         }
-        if(flag == 0){
+        if(flag == 0)
             this.setDistanciaPercorrida(getDistanciaPercorrida() + 2);  //Acrescenta Distancia Percorrida;
-        }
-        
+        else
+            System.out.println("Não foi possivel mover. ");
     }
 
     @Override
