@@ -10,16 +10,22 @@ public abstract class VeiculoMotorizado extends Veiculo {
     private float combustivel;
     private Boolean IPVA;
     private float valorIPVA;
-    //Construtor;
+    private float valorComercial;
+
+        //Construtor;
         public VeiculoMotorizado(int id, int quantRodas, char string, float valorIPVA) {
             super(id, quantRodas, string);
             final Random rn = new Random();
             this.setCombustivel(2.5f);
             this.IPVA = rn.nextBoolean();
             this.valorIPVA = valorIPVA;
+            this.valorComercial = (float) 1000.5;
         }
 
     //Getters;
+    public float getValorComercial() {
+        return valorComercial;
+    }
     public static double  getGastoEsporte() {
          return gastoEsporte;
      }
@@ -40,17 +46,6 @@ public abstract class VeiculoMotorizado extends Veiculo {
     }
 
     //Setters;
-    public static void setGastoEsporte(float gastoEsporte) {
-        VeiculoMotorizado.gastoEsporte = gastoEsporte;
-    }   
-    public static void setGastoPasseio(float gastoPasseio) {
-        VeiculoMotorizado.gastoPasseio = gastoPasseio;
-    }
-    public static void setGastoMoto(float gastoMoto) {
-        VeiculoMotorizado.gastoMoto = gastoMoto;
-    }
-
-    //
     public void setCombustivel(float combustivel) {
         this.combustivel = combustivel;
     }

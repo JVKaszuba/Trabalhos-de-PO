@@ -130,7 +130,7 @@ public class Simulador2 {
 					System.out.print("\nQual o ID do veiculo: ");   
 					num = teclado.nextInt();
 
-					if(num < 0 || num > 19 || veic[num] == null || veic[num].getTipo() == 'B'){
+					if(num < 0 || num > 19 || veic[num] == null || veic[num] instanceof Bicileta){
 						System.out.println("Valor invalido. ");
 						dd = 99;
 					}
@@ -148,7 +148,7 @@ public class Simulador2 {
 					}
 
 				}while(dd == 99);
-
+                
 				if(((VeiculoMotorizado) veic[num]).getCombustivel() + num2 > 55)
 					num2 = 55 - ((VeiculoMotorizado) veic[num]).getCombustivel();
 
