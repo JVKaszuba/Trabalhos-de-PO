@@ -1,8 +1,8 @@
-public class CarroPasseio extends VeiculoMotorizado{
+public class CarroPasseio extends VeiculoMotorizado implements IPVA{
     
     //Construtor;
     public CarroPasseio(int id) {
-        super(id, 4, 'C',(float) (500*1.3));
+        super(id, 4, 'C');
     }
 
     //Metodos;
@@ -39,6 +39,11 @@ public class CarroPasseio extends VeiculoMotorizado{
         System.out.print("|  _     _``-.\n");
         System.out.print("'-(_)---(_)--'\n\n\n");
         
+    }
+
+    @Override
+    public double calcularIPVA() {
+        return valor_Base * cte_Passeio;
     }
     
 }

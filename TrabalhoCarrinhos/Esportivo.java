@@ -1,8 +1,8 @@
-public class Esportivo extends VeiculoMotorizado {
+public class Esportivo extends VeiculoMotorizado implements IPVA {
 
     //Construtor;
     public Esportivo(int id){
-        super(id, 4, 'E', (float) (500*3.15));
+        super(id, 4, 'E');
     }
 
     //Metodos;
@@ -41,5 +41,10 @@ public class Esportivo extends VeiculoMotorizado {
         }
         else
             System.out.println("Não foi possivel mover. ");
+    }
+
+    @Override
+    public double calcularIPVA() {
+        return valor_Base * cte_Esportivo;
     }
 }

@@ -1,8 +1,8 @@
-public class Motocicleta extends VeiculoMotorizado {
+public class Motocicleta extends VeiculoMotorizado implements IPVA{
 
     //Construtor;
     public Motocicleta(int id) {
-        super(id, 2, 'M', (float) (500*0.75));
+        super(id, 2, 'M');
     }
 
     //Metodos;
@@ -38,5 +38,10 @@ public class Motocicleta extends VeiculoMotorizado {
         System.out.print(".-/c-//::\n");  
         System.out.print("(_)'==(_)\n");
         
+    }
+
+    @Override
+    public double calcularIPVA() {
+        return valor_Base * cte_Motocicleta;
     }
 }
