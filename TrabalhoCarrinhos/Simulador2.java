@@ -1,4 +1,9 @@
 import java.util.Scanner;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
+import java.io.FileInputStream;
+import java.io.ObjectInputStream;
 
 public class Simulador2 {
     private static Veiculo[] veic = new Veiculo[20];
@@ -391,13 +396,73 @@ public class Simulador2 {
 				}
 
 			break;
-            case 13:                                                                            //Gravar veiculos em arquivo;                                                        
+            case 13:                                                                            //Gravar veiculos em arquivo;
+            
+                if(quantCar == 0){
+                    System.out.println("Não há carros na Pista. ");
+                    break;
+                }
+                veiculoGravar(veic);
+            
+            break;
             case 14:                                                                            // Ler veiculos do arquivo;
 
+                veic = veiculoLer(veic);
+
+            break;
 			case 15:
-            System.out.println("Fim ");
-            teclado.close();
+
+                System.out.println("Fim ");
+                teclado.close();
+
             break;
             }
+        }
+           
+    private static Veiculo[] veiculoLer(Veiculo veic[]) {
+        File lista = new File("Lista.dat");
+        int quant = 0;
+
+    
+        try{
+            FileInputStream fin = new FileInputStream(lista);
+            ObjectInputStream oin = new ObjectInputStream(fin);
+    
+            Veiculo[] listaArq = (Veiculo[])oin.readObject();
+            oin.close();
+            fin.close();
+
+            for(int i = 0; i < 20; i++) {
+                if(listaArq[i] != null) {quant++;}
+            }
+
+            quantCar = quant;
+            System.out.println("O arquivo \"Lista.dat\" foi lido corretamente");
+
+            return listaArq;
+        }
+        
+        catch(Exception ex) {System.err.println("Erro: " + ex.toString());}
+            
+        return veic;
+    }
+        
+    private static void veiculoGravar(Veiculo veic[]) {
+        File arquivo = new File("Lista.dat");
+
+        try{
+            FileOutputStream fout = new FileOutputStream(arquivo);
+            ObjectOutputStream oos = new ObjectOutputStream(fout);
+    
+            oos.writeObject(veic);
+            oos.flush();
+            oos.close();
+            fout.close();
+
+            System.out.println("O arquivo \"Lista.dat\" foi criado corretamente");
+        }
+        
+        catch(Exception ex) {System.err.println("Erro: " + ex.toString());}
     }
 }
+
